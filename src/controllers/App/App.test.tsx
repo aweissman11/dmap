@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const title = screen.getByText(/Decision MAPPER/i);
+  const title = screen.getByText(/d-map/i);
   expect(title).toBeInTheDocument();
 });
