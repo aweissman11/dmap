@@ -16,12 +16,19 @@ const useStyles = makeStyles(theme =>
     container: {
       paddingTop: theme.spacing(8),
     },
+    title: {
+      marginBottom: theme.spacing(6),
+      [theme.breakpoints.down('xs')]: {
+        fontSize: '4rem',
+      },
+    },
     image: {
       width: '100%',
       height: 'auto',
+      marginBottom: theme.spacing(8),
     },
     buttonWrap: {
-      marginTop: theme.spacing(8),
+      margin: theme.spacing(8, 'auto'),
     },
   }),
 );
@@ -36,11 +43,11 @@ export default function SimpleContainer() {
         src={RoadMap}
         alt="Decision Road Map Diagram"
       />
-      <Typography align="center" variant="h1">
+      <Typography align="center" variant="h1" className={classes.title}>
         DECISION MAP
       </Typography>
       <Typography align="center" variant="h3">
-        decision making support for prosthetic design
+        Support for prosthetic design and selection
       </Typography>
       <Grid container justify="center" className={classes.buttonWrap}>
         <Button

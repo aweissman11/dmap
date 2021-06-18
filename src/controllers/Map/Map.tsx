@@ -2,9 +2,6 @@ import React, { useEffect } from 'react';
 import { Switch, Route, useHistory, useParams } from 'react-router-dom';
 import {
   Button,
-  StepLabel,
-  Step,
-  Stepper,
   Container,
   makeStyles,
   Theme,
@@ -14,6 +11,7 @@ import {
 } from '@material-ui/core';
 import Step1 from '../../components/Step1';
 import Step2 from '../../components/Step2';
+import { MapStepper } from '../../components/MapStepper';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -55,11 +53,14 @@ export default function HorizontalLabelPositionBelowStepper() {
   const history = useHistory();
   const { step } = useParams<routeParams>();
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(Number(step));
+  const [activeStep, setActiveStep] = React.useState<number>(Number(step));
   const steps = getSteps();
 
   useEffect(() => {
     if (Number(step) !== activeStep) {
+      if (isNaN(activeStep)) {
+        setActiveStep(0);
+      }
       history.push(`/map/${activeStep}`);
     }
   }, [step, activeStep, history]);
@@ -96,18 +97,11 @@ export default function HorizontalLabelPositionBelowStepper() {
   }
   return (
     <Container maxWidth="md" className={classes.container}>
-      <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map((label: string, ix: number) => (
-          <Step
-            data-testid={`step-btn-${ix}`}
-            key={label}
-            className={classes.step}
-            onClick={() => setActiveStep(ix)}
-          >
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+      <MapStepper
+        activeStep={activeStep}
+        steps={steps}
+        setActiveStep={setActiveStep}
+      />
       <Switch>
         <Route exact path="/map/0">
           <Step1 />
