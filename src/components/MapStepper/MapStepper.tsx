@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {
+  Container,
   createStyles,
+  Grid,
   makeStyles,
   Step,
   StepLabel,
@@ -9,14 +11,26 @@ import {
   Typography,
 } from '@material-ui/core';
 
+type TStep = {
+  title: string;
+  summary: string;
+};
+
 type TMapStepperProps = {
   activeStep: number;
-  steps: string[];
+  steps: TStep[];
   setActiveStep: (ix: number) => void;
 };
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    desktopTitle: {
+      marginBottom: theme.spacing(6),
+      minHeight: '144px',
+    },
+    marginBelow: {
+      marginBottom: theme.spacing(6),
+    },
     step: {
       '& span': {
         cursor: 'pointer',
@@ -48,25 +62,41 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
 
   if (isMobile) {
     return (
-      <Typography variant="h6" align="center">
-        {steps[activeStep]}
+      <Typography variant="h4" align="center" className={classes.marginBelow}>
+        {steps[activeStep]?.title}
       </Typography>
     );
   }
 
   return (
-    <Stepper activeStep={activeStep} alternativeLabel>
-      {steps.map((step: string, ix: number) => (
-        <Step
-          data-testid={`step-btn-${ix}`}
-          key={step}
-          className={classes.step}
-          onClick={() => setActiveStep(ix)}
-        >
-          <StepLabel>{step}</StepLabel>
-        </Step>
-      ))}
-    </Stepper>
+    <Container>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        className={classes.desktopTitle}
+      >
+        <Typography variant="h2" align="center">
+          {steps[activeStep]?.title}
+        </Typography>
+      </Grid>
+      <Stepper
+        activeStep={activeStep}
+        alternativeLabel
+        className={classes.marginBelow}
+      >
+        {steps.map((step: TStep, ix: number) => (
+          <Step
+            data-testid={`step-btn-${ix}`}
+            key={`${step?.summary}${ix}`}
+            className={classes.step}
+            onClick={() => setActiveStep(ix)}
+          >
+            <StepLabel>{step.summary}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+    </Container>
   );
 }
 

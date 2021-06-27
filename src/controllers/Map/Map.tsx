@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, useHistory, useParams } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  useHistory,
+  useParams,
+  Redirect,
+} from 'react-router-dom';
 import {
   Button,
   Container,
@@ -9,8 +15,7 @@ import {
   Typography,
   Grid,
 } from '@material-ui/core';
-import Step1 from '../../components/Step1';
-import Step2 from '../../components/Step2';
+import { Step1, Step2 } from '../../components/steps';
 import { MapStepper } from '../../components/MapStepper';
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -36,12 +41,30 @@ export const useStyles = makeStyles((theme: Theme) =>
 
 function getSteps() {
   return [
-    'Prosthesis Choices',
-    'Communication',
-    'Values',
-    'Preferences',
-    'Design & Rehabilitation',
-    'Design Changes',
+    {
+      title: 'Overview of parts of a prosthesis/prosthesis decisions',
+      summary: 'Prosthesis Choices',
+    },
+    {
+      title: 'Identifying your communication needs',
+      summary: 'Communication',
+    },
+    {
+      title: 'What is important to you for your first prosthesis?',
+      summary: 'Values',
+    },
+    {
+      title: 'Evaluating Preferences',
+      summary: 'Preferences',
+    },
+    {
+      title: 'Engage in Design and Rehabilitation Work',
+      summary: 'Design & Rehabilitation',
+    },
+    {
+      title: 'Adjust and Make Design Changes When Needed',
+      summary: 'Design Changes',
+    },
   ];
 }
 
@@ -58,25 +81,16 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   useEffect(() => {
     if (Number(step) !== activeStep) {
-      if (isNaN(activeStep)) {
-        setActiveStep(0);
-      }
-      history.push(`/map/${activeStep}`);
+      setActiveStep(Number(step));
     }
   }, [step, activeStep, history]);
 
-  const handleNext = () => {
-    const newStep = activeStep + 1;
-    setActiveStep(newStep);
-  };
+  if (step && isNaN(Number(step))) {
+    return <Redirect to="/map/0" />;
+  }
 
-  const handleBack = () => {
-    const newStep = activeStep - 1;
-    setActiveStep(newStep);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
+  const goToStep = (newStep: number): void => {
+    history.push(`/map/${newStep}`);
   };
 
   function getStepContent(stepIndex: number) {
@@ -100,7 +114,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       <MapStepper
         activeStep={activeStep}
         steps={steps}
-        setActiveStep={setActiveStep}
+        setActiveStep={goToStep}
       />
       <Switch>
         <Route exact path="/map/0">
@@ -135,7 +149,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             <Typography className={classes.instructions}>
               All steps completed
             </Typography>
-            <Button data-testid="reset-btn" onClick={handleReset}>
+            <Button data-testid="reset-btn" onClick={() => goToStep(0)}>
               Reset
             </Button>
           </Grid>
@@ -150,7 +164,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               <Button
                 data-testid="back-btn"
                 disabled={activeStep === 0}
-                onClick={handleBack}
+                onClick={() => goToStep(activeStep - 1)}
                 className={classes.backButton}
               >
                 Back
@@ -159,7 +173,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 data-testid="next-btn"
                 variant="contained"
                 color="secondary"
-                onClick={handleNext}
+                onClick={() => goToStep(activeStep + 1)}
               >
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
