@@ -1,13 +1,18 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
 import MapStepper, { useStyles } from './MapStepper';
 
 describe('MapStepper', () => {
+  type TStep = {
+    title: string;
+    summary: string;
+  };
+
   type componentProps = {
     activeStep: number;
-    steps: string[];
+    steps: TStep[];
     setActiveStep: (ix: number) => void;
   };
 
@@ -22,7 +27,7 @@ describe('MapStepper', () => {
 
   test('useStyles returns a styles object', () => {
     const { result } = renderHook(() => useStyles());
-    expect(result.current.step).toEqual('makeStyles-step-1');
+    expect(result.current.step).toEqual('makeStyles-step-3');
   });
 
   test('renders on mobile', async () => {
@@ -39,11 +44,11 @@ describe('MapStepper', () => {
 
     const { getByText } = renderComponent({
       activeStep: 0,
-      steps: ['active-step'],
+      steps: [{ title: 'active-title', summary: 'active-step' }],
       setActiveStep: () => {},
     });
 
-    await waitFor(() => getByText(/active-step/i));
+    await waitFor(() => getByText(/active-title/i));
   });
 
   test('renders on desktop', async () => {
@@ -60,10 +65,10 @@ describe('MapStepper', () => {
 
     const { getByText } = renderComponent({
       activeStep: 0,
-      steps: ['active-step'],
+      steps: [{ title: 'active-title', summary: 'active-step' }],
       setActiveStep: () => {},
     });
 
-    await waitFor(() => getByText(/active-step/i));
+    await waitFor(() => getByText(/active-title/i));
   });
 });
