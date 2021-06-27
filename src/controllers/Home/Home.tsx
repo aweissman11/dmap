@@ -53,7 +53,7 @@ export default function SimpleContainer() {
         <Button
           variant="contained"
           component={Link}
-          to="/map"
+          to="/map/0"
           color="secondary"
         >
           Get Started

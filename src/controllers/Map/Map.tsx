@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, useHistory, useParams } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  useHistory,
+  useParams,
+  Redirect,
+} from 'react-router-dom';
 import {
   Button,
   Container,
@@ -74,15 +80,14 @@ export default function HorizontalLabelPositionBelowStepper() {
   const steps = getSteps();
 
   useEffect(() => {
-    if (isNaN(Number(step))) {
-      history.push(`/map/0`);
-      setActiveStep(0);
-    } else {
-      if (Number(step) !== activeStep) {
-        setActiveStep(Number(step));
-      }
+    if (Number(step) !== activeStep) {
+      setActiveStep(Number(step));
     }
   }, [step, activeStep, history]);
+
+  if (step && isNaN(Number(step))) {
+    return <Redirect to="/map/0" />;
+  }
 
   const goToStep = (newStep: number): void => {
     history.push(`/map/${newStep}`);
