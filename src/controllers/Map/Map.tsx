@@ -15,8 +15,8 @@ import {
   Typography,
   Grid,
 } from '@material-ui/core';
-import { Step1, Step2 } from '../../components/steps';
-import { MapStepper } from '../../components/MapStepper';
+import { Step1, Step2, Step3 } from 'components/steps';
+import MapStepper from 'components/MapStepper';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -124,7 +124,7 @@ export default function HorizontalLabelPositionBelowStepper() {
           <Step2 />
         </Route>
         <Route exact path="/map/2">
-          <h1>2</h1>
+          <Step3 />
         </Route>
         <Route exact path="/map/3">
           <h1>3</h1>

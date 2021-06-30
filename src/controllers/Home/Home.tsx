@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 
-import RoadMap from '../../assets/presentation_road_map.png';
+import { RoadMap } from 'assets';
 import {
   Button,
   createStyles,

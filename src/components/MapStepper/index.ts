@@ -1,1 +1,2 @@
-export { default as MapStepper } from './MapStepper';
+import MapStepper from './MapStepper';
+export default MapStepper;

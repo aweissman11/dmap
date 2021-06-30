@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Container, Grid } from '@material-ui/core';
 
-import ProstheticLegs from '../../../assets/prosthetic_legs.png';
+import { ProstheticLegs } from 'assets';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({

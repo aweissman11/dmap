@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 
-import Home from '../Home';
+import Home from 'controllers/Home';
+import Map from 'controllers/Map';
 
-import Nav from '../../components/Nav';
-import Map from '../Map';
+import Nav from 'components/Nav';
 
 import theme from './theme';
 
