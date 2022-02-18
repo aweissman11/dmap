@@ -1,33 +1,18 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@mui/material/styles';
 
 const COLORS = {
-  dark_blue: '#383b6f',
-  aqua: '#b7e4cf',
+  primary: {
+    main: '#006599',
+    light: '#ccdfeb',
+  },
+  secondary: {
+    main: '#0b8458',
+  },
 };
 
-const default_theme = createMuiTheme({
+export const default_theme = createTheme({
   palette: {
-    primary: {
-      main: COLORS.dark_blue,
-    },
-    secondary: {
-      main: COLORS.aqua,
-    },
-  },
-  overrides: {
-    MuiStepIcon: {
-      root: {
-        '&$completed': {
-          color: COLORS.aqua,
-        },
-        '&$active': {
-          color: COLORS.dark_blue,
-        },
-      },
-      active: {},
-      completed: {},
-    },
+    primary: COLORS.primary,
+    secondary: COLORS.secondary,
   },
 });
-
-export default default_theme;

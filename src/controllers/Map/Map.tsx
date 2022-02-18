@@ -6,38 +6,9 @@ import {
   useParams,
   Redirect,
 } from 'react-router-dom';
-import {
-  Button,
-  Container,
-  makeStyles,
-  Theme,
-  createStyles,
-  Typography,
-  Grid,
-} from '@material-ui/core';
+import { Button, Container, Typography, Grid } from '@mui/material';
 import { Step1, Step2 } from '../../components/steps';
 import { MapStepper } from '../../components/MapStepper';
-
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(8),
-    },
-    backButton: {
-      marginRight: theme.spacing(1),
-    },
-    instructions: {
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(1),
-    },
-    step: {
-      '& span': {
-        cursor: 'pointer',
-      },
-    },
-  }),
-);
 
 function getSteps() {
   return [
@@ -75,7 +46,6 @@ type routeParams = {
 export default function HorizontalLabelPositionBelowStepper() {
   const history = useHistory();
   const { step } = useParams<routeParams>();
-  const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState<number>(Number(step));
   const steps = getSteps();
 
@@ -110,7 +80,10 @@ export default function HorizontalLabelPositionBelowStepper() {
     }
   }
   return (
-    <Container maxWidth="md" className={classes.container}>
+    <Container
+      maxWidth="md"
+      sx={{ pt: theme => theme.spacing(8), pb: theme => theme.spacing(8) }}
+    >
       <MapStepper
         activeStep={activeStep}
         steps={steps}
@@ -136,17 +109,22 @@ export default function HorizontalLabelPositionBelowStepper() {
           <h1>5</h1>
         </Route>
       </Switch>
-      <Grid container justify="center">
+      <Grid container justifyContent="center">
         {activeStep === steps.length ? (
           <Grid
             item
             xs={12}
             container
-            justify="center"
+            justifyContent="center"
             direction="column"
             alignItems="center"
           >
-            <Typography className={classes.instructions}>
+            <Typography
+              sx={{
+                mt: theme => theme.spacing(1),
+                mb: theme => theme.spacing(1),
+              }}
+            >
               All steps completed
             </Typography>
             <Button data-testid="reset-btn" onClick={() => goToStep(0)}>
@@ -154,25 +132,31 @@ export default function HorizontalLabelPositionBelowStepper() {
             </Button>
           </Grid>
         ) : (
-          <Grid item xs={12} container justify="center">
+          <Grid item xs={12} container justifyContent="center">
             <Grid item xs={12}>
-              <Typography className={classes.instructions} align="center">
+              <Typography
+                sx={{
+                  mt: theme => theme.spacing(1),
+                  mb: theme => theme.spacing(1),
+                }}
+                align="center"
+              >
                 {getStepContent(activeStep)}
               </Typography>
             </Grid>
-            <Grid item xs={12} container justify="center">
+            <Grid item xs={12} container justifyContent="center">
               <Button
                 data-testid="back-btn"
                 disabled={activeStep === 0}
                 onClick={() => goToStep(activeStep - 1)}
-                className={classes.backButton}
+                sx={{ mr: theme => theme.spacing(1) }}
               >
                 Back
               </Button>
               <Button
                 data-testid="next-btn"
                 variant="contained"
-                color="secondary"
+                color="success"
                 onClick={() => goToStep(activeStep + 1)}
               >
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}

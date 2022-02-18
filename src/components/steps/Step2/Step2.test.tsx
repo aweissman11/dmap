@@ -7,15 +7,10 @@ import {
 } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import Step2, { useStyles } from './Step2';
+import Step2 from './Step2';
 import AgreeRadio from './AgreeRadio';
 
 describe('Step2', () => {
-  test('useStyles returns a styles object', () => {
-    const { result } = renderHook(() => useStyles());
-    expect(result.current.paper).toEqual('makeStyles-paper-1');
-  });
-
   test('renders the the step wrapper component', () => {
     render(<Step2 />);
     const step2 = screen.getByTestId('step-2');

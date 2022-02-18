@@ -1,50 +1,46 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import { styled } from '@mui/material';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-    '& > a': {
-      color: theme.palette.common.white,
-      textDecoration: 'none',
-    },
+const Root = styled('div')(({ theme }) => ({
+  flexGrow: 1,
+}));
+const MenuButton = styled(IconButton)(({ theme }) => ({
+  marginRight: theme.spacing(2),
+}));
+const Title = styled(Typography)(({ theme }) => ({
+  flexGrow: 1,
+  '& > a': {
+    color: theme.palette.common.white,
+    textDecoration: 'none',
   },
 }));
 
 export default function ButtonAppBar() {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
+    <Root>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          <MenuButton
             edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            size="large"
           >
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          </MenuButton>
+          <Title variant="h6">
             <Link to="/">D-Map</Link>
-          </Typography>
+          </Title>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-    </div>
+    </Root>
   );
 }

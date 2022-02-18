@@ -1,17 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 import Home from '../Home';
-
 import Nav from '../../components/Nav';
 import Map from '../Map';
 
-import theme from './theme';
+import { default_theme } from './theme';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={default_theme}>
       <div className="App">
         <Router>
           <Nav />

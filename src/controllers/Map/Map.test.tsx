@@ -30,11 +30,6 @@ describe('Map', () => {
       </MemoryRouter>,
     );
 
-  test('useStyles returns a styles object', () => {
-    const { result } = renderHook(() => useStyles());
-    expect(result.current.container).toEqual('makeStyles-container-1');
-  });
-
   test('renders the first step', async () => {
     const { getByText } = renderComponent({ step: 0 });
 

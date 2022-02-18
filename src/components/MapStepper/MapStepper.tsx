@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Container,
-  createStyles,
   Grid,
-  makeStyles,
   Step,
   StepLabel,
   Stepper,
-  Theme,
   Typography,
-} from '@material-ui/core';
+  styled,
+} from '@mui/material';
 
 type TStep = {
   title: string;
@@ -22,25 +20,22 @@ type TMapStepperProps = {
   setActiveStep: (ix: number) => void;
 };
 
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    desktopTitle: {
-      marginBottom: theme.spacing(6),
-      minHeight: '144px',
-    },
-    marginBelow: {
-      marginBottom: theme.spacing(6),
-    },
-    step: {
-      '& span': {
-        cursor: 'pointer',
-      },
-    },
-  }),
-);
+const DesktopTitleGrid = styled(Grid)(({ theme }) => ({
+  marginBottom: theme.spacing(6),
+  minHeight: '144px',
+}));
+
+const MarginBelowStepper = styled(Stepper)(({ theme }) => ({
+  marginBottom: theme.spacing(6),
+}));
+
+const ClickableStep = styled(Step)(({ theme }) => ({
+  '& span': {
+    cursor: 'pointer',
+  },
+}));
 
 function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
-  const classes = useStyles();
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
@@ -62,7 +57,11 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
 
   if (isMobile) {
     return (
-      <Typography variant="h4" align="center" className={classes.marginBelow}>
+      <Typography
+        variant="h4"
+        align="center"
+        sx={{ mb: theme => theme.spacing(6) }}
+      >
         {steps[activeStep]?.title}
       </Typography>
     );
@@ -70,32 +69,22 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
 
   return (
     <Container>
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        className={classes.desktopTitle}
-      >
+      <DesktopTitleGrid container justifyContent="center" alignItems="center">
         <Typography variant="h2" align="center">
           {steps[activeStep]?.title}
         </Typography>
-      </Grid>
-      <Stepper
-        activeStep={activeStep}
-        alternativeLabel
-        className={classes.marginBelow}
-      >
+      </DesktopTitleGrid>
+      <MarginBelowStepper activeStep={activeStep} alternativeLabel>
         {steps.map((step: TStep, ix: number) => (
-          <Step
+          <ClickableStep
             data-testid={`step-btn-${ix}`}
             key={`${step?.summary}${ix}`}
-            className={classes.step}
             onClick={() => setActiveStep(ix)}
           >
             <StepLabel>{step.summary}</StepLabel>
-          </Step>
+          </ClickableStep>
         ))}
-      </Stepper>
+      </MarginBelowStepper>
     </Container>
   );
 }
