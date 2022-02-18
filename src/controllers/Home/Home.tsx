@@ -1,55 +1,44 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
+import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 
 import RoadMap from '../../assets/presentation_road_map.png';
-import {
-  Button,
-  createStyles,
-  Grid,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { Button, Grid, Typography, styled } from '@mui/material';
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    container: {
-      paddingTop: theme.spacing(8),
-    },
-    title: {
-      marginBottom: theme.spacing(6),
-      [theme.breakpoints.down('xs')]: {
-        fontSize: '4rem',
-      },
-    },
-    image: {
-      width: '100%',
-      height: 'auto',
-      marginBottom: theme.spacing(8),
-    },
-    buttonWrap: {
-      margin: theme.spacing(8, 'auto'),
-    },
-  }),
-);
+const HomeContainer = styled(Container)(({ theme }) => {
+  return {
+    paddingTop: theme.spacing(8),
+  };
+});
+
+const Title = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(6),
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '4rem',
+  },
+}));
+
+const ButtonGrid = styled(Grid)(({ theme }) => ({
+  margin: theme.spacing(8, 'auto'),
+}));
+
+const HomeImage = styled('img')(({ theme }) => ({
+  width: '100%',
+  height: 'auto',
+  marginBottom: theme.spacing(8),
+}));
 
 export default function SimpleContainer() {
-  const classes = useStyles();
-
   return (
-    <Container maxWidth="md" className={classes.container}>
-      <img
-        className={classes.image}
-        src={RoadMap}
-        alt="Decision Road Map Diagram"
-      />
-      <Typography align="center" variant="h1" className={classes.title}>
+    <HomeContainer maxWidth="md">
+      <HomeImage src={RoadMap} alt="Decision Road Map Diagram" />
+      <Title align="center" variant="h1">
         DECISION MAP
-      </Typography>
+      </Title>
       <Typography align="center" variant="h3">
         Support for prosthetic design and selection
       </Typography>
-      <Grid container justify="center" className={classes.buttonWrap}>
+      <ButtonGrid container justifyContent="center">
         <Button
           variant="contained"
           component={Link}
@@ -58,7 +47,7 @@ export default function SimpleContainer() {
         >
           Get Started
         </Button>
-      </Grid>
-    </Container>
+      </ButtonGrid>
+    </HomeContainer>
   );
 }

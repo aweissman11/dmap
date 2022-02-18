@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+// import { renderHook } from '@testing-library/react-hooks';
 
-import MapStepper, { useStyles } from './MapStepper';
+import MapStepper from './MapStepper';
 
 describe('MapStepper', () => {
   type TStep = {
@@ -24,11 +24,6 @@ describe('MapStepper', () => {
         setActiveStep={props.setActiveStep}
       />,
     );
-
-  test('useStyles returns a styles object', () => {
-    const { result } = renderHook(() => useStyles());
-    expect(result.current.step).toEqual('makeStyles-step-3');
-  });
 
   test('renders on mobile', async () => {
     window.matchMedia = query => ({

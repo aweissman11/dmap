@@ -1,31 +1,21 @@
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Container, Grid } from '@material-ui/core';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Container, Grid, styled } from '@mui/material';
 
 import ProstheticLegs from '../../../assets/prosthetic_legs.png';
 
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: '100%',
-    },
-    marginBelow: {
-      marginBottom: theme.spacing(8),
-    },
-    heading: {
-      fontSize: theme.typography.pxToRem(15),
-      fontWeight: theme.typography.fontWeightRegular,
-    },
-    image: {
-      width: '100%',
-      height: 'auto',
-    },
-  }),
-);
+const HeadingType = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.pxToRem(15),
+  fontWeight: theme.typography.fontWeightRegular,
+}));
+
+const Img = styled('img')(({ theme }) => ({
+  width: '100%',
+  height: 'auto',
+}));
 
 const LEG_COMPONENTS = [
   {
@@ -65,12 +55,10 @@ const LEG_COMPONENTS = [
 ];
 
 export default function Step1() {
-  const classes = useStyles();
-
   return (
     <Container>
-      <Grid container justify="center">
-        <Grid item md={8} xs={12} className={classes.marginBelow}>
+      <Grid container justifyContent="center">
+        <Grid item md={8} xs={12} sx={{ mb: theme => theme.spacing(6) }}>
           <Typography>
             There are several parts that make up a lower limb prosthesis. Within
             each part, there are numerous options available. For your first
@@ -79,13 +67,13 @@ export default function Step1() {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container justify="space-between" className={classes.marginBelow}>
+      <Grid
+        container
+        justifyContent="space-between"
+        sx={{ mb: theme => theme.spacing(6) }}
+      >
         <Grid item xs={12} md={5} container alignItems="center">
-          <img
-            src={ProstheticLegs}
-            alt="Prosthetic leg diagram"
-            className={classes.image}
-          />
+          <Img src={ProstheticLegs} alt="Prosthetic leg diagram" />
         </Grid>
         <Grid item xs={12} md={6}>
           {LEG_COMPONENTS.map(cmp => (
@@ -95,7 +83,7 @@ export default function Step1() {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography className={classes.heading}>{cmp.name}</Typography>
+                <HeadingType>{cmp.name}</HeadingType>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>{cmp.description}</Typography>
