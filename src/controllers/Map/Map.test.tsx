@@ -1,9 +1,8 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
 import { MemoryRouter, Route } from 'react-router';
 
-import Map, { useStyles } from './Map';
+import Map from './Map';
 
 window.matchMedia = query => ({
   matches: false,

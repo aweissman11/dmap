@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import {
-  Container,
   Grid,
   Step,
   StepLabel,
@@ -8,6 +6,7 @@ import {
   Typography,
   styled,
 } from '@mui/material';
+import RoadMap from '../RoadMap';
 
 type TStep = {
   title: string;
@@ -20,72 +19,73 @@ type TMapStepperProps = {
   setActiveStep: (ix: number) => void;
 };
 
-const DesktopTitleGrid = styled(Grid)(({ theme }) => ({
+const MobileTitle = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(6),
+  [theme.breakpoints.up('md')]: {
+    display: 'none',
+  },
+}));
+
+type TRoadMapWrapProps = {
+  step: number;
+};
+const RoadMapWrap = styled('div')(({ step }: TRoadMapWrapProps) => ({
+  position: 'relative',
+  marginTop: step % 2 === 0 ? -40 : -120,
+  marginBottom: step % 2 === 0 ? -80 : -20,
+}));
+
+const DesktopWrapper = styled('div')(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
+  },
+}));
+
+const DesktopTitleGrid = styled(Grid)(({ theme }) => ({
   minHeight: '144px',
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
+  },
 }));
 
 const MarginBelowStepper = styled(Stepper)(({ theme }) => ({
   marginBottom: theme.spacing(6),
 }));
 
-const ClickableStep = styled(Step)(({ theme }) => ({
+const ClickableStep = styled(Step)(() => ({
   '& span': {
     cursor: 'pointer',
   },
 }));
 
 function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
-  const [isMobile, setIsMobile] = useState(true);
-
-  useEffect(() => {
-    const handleResize = () => {
-      let mql = window.matchMedia('(max-width: 600px)');
-      if (mql.matches) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [isMobile]);
-
-  if (isMobile) {
-    return (
-      <Typography
-        variant="h4"
-        align="center"
-        sx={{ mb: theme => theme.spacing(6) }}
-      >
-        {steps[activeStep]?.title}
-      </Typography>
-    );
-  }
-
   return (
-    <Container>
+    <div>
       <DesktopTitleGrid container justifyContent="center" alignItems="center">
-        <Typography variant="h2" align="center">
+        <Typography variant="h1" align="center" sx={{ fontSize: '4rem' }}>
           {steps[activeStep]?.title}
         </Typography>
       </DesktopTitleGrid>
-      <MarginBelowStepper activeStep={activeStep} alternativeLabel>
-        {steps.map((step: TStep, ix: number) => (
-          <ClickableStep
-            data-testid={`step-btn-${ix}`}
-            key={`${step?.summary}${ix}`}
-            onClick={() => setActiveStep(ix)}
-          >
-            <StepLabel>{step.summary}</StepLabel>
-          </ClickableStep>
-        ))}
-      </MarginBelowStepper>
-    </Container>
+      <MobileTitle variant="h4" align="center" sx={{ mb: 6 }}>
+        {steps[activeStep]?.title}
+      </MobileTitle>
+      <RoadMapWrap step={activeStep}>
+        <RoadMap step={activeStep + 1} />
+      </RoadMapWrap>
+      <DesktopWrapper>
+        <MarginBelowStepper activeStep={activeStep} alternativeLabel>
+          {steps.map((step: TStep, ix: number) => (
+            <ClickableStep
+              data-testid={`step-btn-${ix}`}
+              key={`${step?.summary}${ix}`}
+              onClick={() => setActiveStep(ix)}
+            >
+              <StepLabel>{step.summary}</StepLabel>
+            </ClickableStep>
+          ))}
+        </MarginBelowStepper>
+      </DesktopWrapper>
+    </div>
   );
 }
 

@@ -58,7 +58,7 @@ export default function Step1() {
   return (
     <Container>
       <Grid container justifyContent="center">
-        <Grid item md={8} xs={12} sx={{ mb: theme => theme.spacing(6) }}>
+        <Grid item md={8} xs={12} sx={{ mb: 6 }}>
           <Typography>
             There are several parts that make up a lower limb prosthesis. Within
             each part, there are numerous options available. For your first
@@ -67,11 +67,7 @@ export default function Step1() {
           </Typography>
         </Grid>
       </Grid>
-      <Grid
-        container
-        justifyContent="space-between"
-        sx={{ mb: theme => theme.spacing(6) }}
-      >
+      <Grid container justifyContent="space-between" sx={{ mb: 6 }}>
         <Grid item xs={12} md={5} container alignItems="center">
           <Img src={ProstheticLegs} alt="Prosthetic leg diagram" />
         </Grid>

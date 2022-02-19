@@ -1,9 +1,8 @@
-import React from 'react';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 
-import RoadMap from '../../assets/presentation_road_map.png';
 import { Button, Grid, Typography, styled } from '@mui/material';
+import RoadMap from '../RoadMap';
 
 const HomeContainer = styled(Container)(({ theme }) => {
   return {
@@ -22,21 +21,26 @@ const ButtonGrid = styled(Grid)(({ theme }) => ({
   margin: theme.spacing(8, 'auto'),
 }));
 
-const HomeImage = styled('img')(({ theme }) => ({
-  width: '100%',
-  height: 'auto',
-  marginBottom: theme.spacing(8),
-}));
-
 export default function SimpleContainer() {
   return (
     <HomeContainer maxWidth="md">
-      <HomeImage src={RoadMap} alt="Decision Road Map Diagram" />
+      <RoadMap />
       <Title align="center" variant="h1">
         DECISION MAP
       </Title>
       <Typography align="center" variant="h3">
         Support for prosthetic design and selection
+      </Typography>
+      <Typography gutterBottom align="center" sx={{ mt: 4 }}>
+        This tool is designed to help you and your prosthetists work together
+        with your care team to make the best prosthesis for you.
+      </Typography>
+      <Typography gutterBottom align="center">
+        This tool shows decisions that may come up in your journey.
+      </Typography>
+      <Typography gutterBottom align="center">
+        Use and review at your pace, or stop and return to it later in your
+        journey.
       </Typography>
       <ButtonGrid container justifyContent="center">
         <Button

@@ -37,13 +37,13 @@ describe('MapStepper', () => {
       dispatchEvent: jest.fn(),
     });
 
-    const { getByText } = renderComponent({
+    const { getAllByText } = renderComponent({
       activeStep: 0,
       steps: [{ title: 'active-title', summary: 'active-step' }],
       setActiveStep: () => {},
     });
 
-    await waitFor(() => getByText(/active-title/i));
+    await waitFor(() => getAllByText(/active-title/i));
   });
 
   test('renders on desktop', async () => {
@@ -58,12 +58,12 @@ describe('MapStepper', () => {
       dispatchEvent: jest.fn(),
     });
 
-    const { getByText } = renderComponent({
+    const { getAllByText } = renderComponent({
       activeStep: 0,
       steps: [{ title: 'active-title', summary: 'active-step' }],
       setActiveStep: () => {},
     });
 
-    await waitFor(() => getByText(/active-title/i));
+    await waitFor(() => getAllByText(/active-title/i));
   });
 });
