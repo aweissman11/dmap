@@ -19,7 +19,7 @@ export default function Step2() {
   return (
     <Container>
       <Grid container justifyContent="center">
-        <Grid item md={8} xs={12} sx={{ mb: theme => theme.spacing(6) }}>
+        <Grid item md={8} xs={12} sx={{ mb: 6 }}>
           <Typography gutterBottom>
             You and your prosthetist will be working together to design the best
             prosthesis to meet your needs. There are many options and

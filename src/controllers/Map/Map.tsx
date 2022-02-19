@@ -43,7 +43,7 @@ type routeParams = {
   step: string;
 };
 
-export default function HorizontalLabelPositionBelowStepper() {
+export default function Map() {
   const history = useHistory();
   const { step } = useParams<routeParams>();
   const [activeStep, setActiveStep] = React.useState<number>(Number(step));
@@ -80,10 +80,7 @@ export default function HorizontalLabelPositionBelowStepper() {
     }
   }
   return (
-    <Container
-      maxWidth="md"
-      sx={{ pt: theme => theme.spacing(8), pb: theme => theme.spacing(8) }}
-    >
+    <Container maxWidth="md" sx={{ pt: 8, pb: 8 }}>
       <MapStepper
         activeStep={activeStep}
         steps={steps}
@@ -121,8 +118,8 @@ export default function HorizontalLabelPositionBelowStepper() {
           >
             <Typography
               sx={{
-                mt: theme => theme.spacing(1),
-                mb: theme => theme.spacing(1),
+                mt: 1,
+                mb: 1,
               }}
             >
               All steps completed
@@ -136,8 +133,8 @@ export default function HorizontalLabelPositionBelowStepper() {
             <Grid item xs={12}>
               <Typography
                 sx={{
-                  mt: theme => theme.spacing(1),
-                  mb: theme => theme.spacing(1),
+                  mt: 1,
+                  mb: 1,
                 }}
                 align="center"
               >
@@ -149,7 +146,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 data-testid="back-btn"
                 disabled={activeStep === 0}
                 onClick={() => goToStep(activeStep - 1)}
-                sx={{ mr: theme => theme.spacing(1) }}
+                sx={{ mr: 1 }}
               >
                 Back
               </Button>
