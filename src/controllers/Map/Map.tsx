@@ -7,34 +7,34 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { Button, Container, Typography, Grid } from '@mui/material';
-import { Step1, Step2 } from '../../components/steps';
+import { Step4, Step2 } from '../../components/steps';
 import { MapStepper } from '../../components/MapStepper';
 
 function getSteps() {
   return [
     {
-      title: 'Overview of parts of a prosthesis/prosthesis decisions',
-      summary: 'Prosthesis Choices',
+      title: 'My Amputation and Early Recovery',
+      summary: 'Amputation',
     },
     {
-      title: 'Identifying your communication needs',
+      title: 'My Communication Preferences',
       summary: 'Communication',
     },
     {
-      title: 'What is important to you for your first prosthesis?',
+      title: 'My Values for Prosthesis Design',
       summary: 'Values',
     },
     {
-      title: 'Evaluating Preferences',
+      title: 'My First Prosthesis Design',
+      summary: 'First Prosthesis',
+    },
+    {
+      title: 'My Preferences for Prosthesis Design',
       summary: 'Preferences',
     },
     {
-      title: 'Engage in Design and Rehabilitation Work',
-      summary: 'Design & Rehabilitation',
-    },
-    {
-      title: 'Adjust and Make Design Changes When Needed',
-      summary: 'Design Changes',
+      title: 'My Journey with a Prosthesis',
+      summary: 'Journey',
     },
   ];
 }
@@ -80,7 +80,7 @@ export default function Map() {
     }
   }
   return (
-    <Container maxWidth="md" sx={{ pt: 8, pb: 8 }}>
+    <Container maxWidth="xl" sx={{ pt: 8, pb: 8 }}>
       <MapStepper
         activeStep={activeStep}
         steps={steps}
@@ -88,7 +88,7 @@ export default function Map() {
       />
       <Switch>
         <Route exact path="/map/0">
-          <Step1 />
+          <h1>0</h1>
         </Route>
         <Route exact path="/map/1">
           <Step2 />
@@ -97,7 +97,7 @@ export default function Map() {
           <h1>2</h1>
         </Route>
         <Route exact path="/map/3">
-          <h1>3</h1>
+          <Step4 />
         </Route>
         <Route exact path="/map/4">
           <h1>4</h1>

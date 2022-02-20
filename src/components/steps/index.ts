@@ -1,4 +1,4 @@
-import Step1 from './Step1';
+import Step4 from './Step4';
 import Step2 from './Step2';
 
-export { Step1, Step2 };
+export { Step4, Step2 };

@@ -4,6 +4,14 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { styled } from '@mui/material';
+
+const FlexibleRadioGroup = styled(RadioGroup)(({ theme }) => ({
+  flexDirection: 'row',
+  [theme.breakpoints.down('lg')]: {
+    flexDirection: 'column',
+  },
+}));
 
 type AgreeRadioProps = {
   question: string;
@@ -11,24 +19,24 @@ type AgreeRadioProps = {
 
 const AGREEMENT_LEVELS = [
   {
-    val: 'str_agree',
-    title: 'Strongly Agree',
-  },
-  {
-    val: 'agree',
-    title: 'Agree',
-  },
-  {
-    val: 'neutral',
-    title: 'Neutral',
+    val: 'str_disagree',
+    title: 'Strongly Disagree',
   },
   {
     val: 'disagree',
     title: 'Disagree',
   },
   {
-    val: 'str_disagree',
-    title: 'Strongly Disagree',
+    val: 'neutral',
+    title: 'Neutral',
+  },
+  {
+    val: 'agree',
+    title: 'Agree',
+  },
+  {
+    val: 'str_agree',
+    title: 'Strongly Agree',
   },
 ];
 
@@ -42,12 +50,11 @@ export default function AgreeRadio({ question }: AgreeRadioProps) {
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend">{question}</FormLabel>
-      <RadioGroup
+      <FlexibleRadioGroup
         aria-label="gender"
         name="gender1"
         value={value}
         onChange={handleChange}
-        row
       >
         {AGREEMENT_LEVELS.map(lvl => (
           <FormControlLabel
@@ -57,7 +64,7 @@ export default function AgreeRadio({ question }: AgreeRadioProps) {
             label={lvl.title}
           />
         ))}
-      </RadioGroup>
+      </FlexibleRadioGroup>
     </FormControl>
   );
 }
