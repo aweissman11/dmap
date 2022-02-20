@@ -23,7 +23,7 @@ const ButtonGrid = styled(Grid)(({ theme }) => ({
 
 export default function SimpleContainer() {
   return (
-    <HomeContainer maxWidth="md">
+    <HomeContainer maxWidth="xl">
       <RoadMap />
       <Title align="center" variant="h1">
         DECISION MAP

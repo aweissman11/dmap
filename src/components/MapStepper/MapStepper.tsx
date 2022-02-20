@@ -7,6 +7,7 @@ import {
   styled,
 } from '@mui/material';
 import RoadMap from '../RoadMap';
+import DotsMobileStepper from './DotsMobileStepper';
 
 type TStep = {
   title: string;
@@ -26,23 +27,37 @@ const MobileTitle = styled(Typography)(({ theme }) => ({
   },
 }));
 
-type TRoadMapWrapProps = {
-  step: number;
-};
-const RoadMapWrap = styled('div')(({ step }: TRoadMapWrapProps) => ({
+const RoadMapWrap = styled('div', {
+  shouldForwardProp: p => p !== 'step',
+})<{ step: number }>(({ theme, step }) => ({
   position: 'relative',
-  marginTop: step % 2 === 0 ? -40 : -120,
-  marginBottom: step % 2 === 0 ? -80 : -20,
+  zIndex: -1,
+  [theme.breakpoints.up('md')]: {
+    marginTop: step % 2 === 0 ? -40 : -120,
+    marginBottom: step % 2 === 0 ? -80 : -20,
+  },
 }));
 
-const DesktopWrapper = styled('div')(({ theme }) => ({
+const DesktopStepWrapper = styled('div')(({ theme }) => ({
+  zIndex: 1,
   [theme.breakpoints.down('md')]: {
+    display: 'none',
+  },
+}));
+
+const MobileStepWrapper = styled('div')(({ theme }) => ({
+  zIndex: 1,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  [theme.breakpoints.up('md')]: {
     display: 'none',
   },
 }));
 
 const DesktopTitleGrid = styled(Grid)(({ theme }) => ({
   minHeight: '144px',
+  marginBottom: theme.spacing(2),
   [theme.breakpoints.down('md')]: {
     display: 'none',
   },
@@ -66,13 +81,7 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
           {steps[activeStep]?.title}
         </Typography>
       </DesktopTitleGrid>
-      <MobileTitle variant="h4" align="center" sx={{ mb: 6 }}>
-        {steps[activeStep]?.title}
-      </MobileTitle>
-      <RoadMapWrap step={activeStep}>
-        <RoadMap step={activeStep + 1} />
-      </RoadMapWrap>
-      <DesktopWrapper>
+      <DesktopStepWrapper>
         <MarginBelowStepper activeStep={activeStep} alternativeLabel>
           {steps.map((step: TStep, ix: number) => (
             <ClickableStep
@@ -84,7 +93,20 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
             </ClickableStep>
           ))}
         </MarginBelowStepper>
-      </DesktopWrapper>
+      </DesktopStepWrapper>
+      <MobileStepWrapper>
+        <DotsMobileStepper
+          steps={steps.length}
+          activeStep={activeStep}
+          setActiveStep={setActiveStep}
+        />
+      </MobileStepWrapper>
+      <MobileTitle variant="h4" align="center" sx={{ mb: 6 }}>
+        {steps[activeStep]?.title}
+      </MobileTitle>
+      <RoadMapWrap step={activeStep}>
+        <RoadMap step={activeStep + 1} />
+      </RoadMapWrap>
     </div>
   );
 }

@@ -21,6 +21,14 @@ const RoadMapWrapper = styled('div')(({ theme }) => ({
   position: 'relative',
   width: '100%',
   height: 400,
+  maxWidth: 845,
+  margin: 'auto',
+  [theme.breakpoints.down('md')]: {
+    height: 200,
+  },
+  [theme.breakpoints.down('sm')]: {
+    height: 150,
+  },
 }));
 
 const CssMap = styled('div')(({ theme }) => ({
@@ -61,6 +69,7 @@ const MapImage = styled('div', {
     backgroundImage: `url(${image})`,
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
