@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 // import { renderHook } from '@testing-library/react-hooks';
 
 import MapStepper from './MapStepper';
@@ -25,27 +25,6 @@ describe('MapStepper', () => {
       />,
     );
 
-  test('renders on mobile', async () => {
-    window.matchMedia = query => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(), // Deprecated
-      removeListener: jest.fn(), // Deprecated
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
-    });
-
-    const { getAllByText } = renderComponent({
-      activeStep: 0,
-      steps: [{ title: 'active-title', summary: 'active-step' }],
-      setActiveStep: () => {},
-    });
-
-    await waitFor(() => getAllByText(/active-title/i));
-  });
-
   test('renders on desktop', async () => {
     window.matchMedia = query => ({
       matches: true,
@@ -65,5 +44,64 @@ describe('MapStepper', () => {
     });
 
     await waitFor(() => getAllByText(/active-title/i));
+  });
+
+  test('renders on mobile', async () => {
+    window.matchMedia = query => ({
+      matches: true,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(), // Deprecated
+      removeListener: jest.fn(), // Deprecated
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    });
+
+    const { getByTestId } = renderComponent({
+      activeStep: 0,
+      steps: [{ title: 'active-title', summary: 'active-step' }],
+      setActiveStep: () => {},
+    });
+
+    await waitFor(() => getByTestId(/mobile-stepper/i));
+  });
+
+  test('can hanlde next', async () => {
+    renderComponent({
+      activeStep: 1,
+      steps: [
+        { title: 'active-title', summary: 'active-step' },
+        { title: 'active-title-1', summary: 'active-step' },
+      ],
+      setActiveStep: () => {},
+    });
+
+    fireEvent.click(screen.getByTestId('mobile-next-btn'));
+
+    // await waitFor(() => screen.getByRole('heading'));
+
+    expect(screen.getByTestId('desktop-step-title')).toHaveTextContent(
+      'active-title-1',
+    );
+  });
+
+  test('can hanlde prev', async () => {
+    renderComponent({
+      activeStep: 1,
+      steps: [
+        { title: 'active-title', summary: 'active-step' },
+        { title: 'active-title-1', summary: 'active-step' },
+      ],
+      setActiveStep: () => {},
+    });
+
+    fireEvent.click(screen.getByTestId('mobile-prev-btn'));
+
+    // await waitFor(() => screen.getByRole('heading'));
+
+    expect(screen.getByTestId('desktop-step-title')).toHaveTextContent(
+      'active-title',
+    );
   });
 });

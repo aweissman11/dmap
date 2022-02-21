@@ -11,7 +11,6 @@ type TDotsMobileStepperProps = {
   setActiveStep: (ix: number) => void;
 };
 
-// TODO: Test this
 export default function DotsMobileStepper({
   steps,
   activeStep,
@@ -29,28 +28,31 @@ export default function DotsMobileStepper({
 
   return (
     <MobileStepper
+      data-testid="mobile-stepper"
       variant="dots"
       steps={steps}
       position="static"
       activeStep={activeStep}
       sx={{ maxWidth: 400, flexGrow: 1, mb: 4, mt: '-32px' }}
       nextButton={
-        <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
+        <Button
+          data-testid="mobile-next-btn"
+          size="small"
+          onClick={handleNext}
+          disabled={activeStep === 5}
+        >
           Next
-          {theme.direction === 'rtl' ? (
-            <KeyboardArrowLeft />
-          ) : (
-            <KeyboardArrowRight />
-          )}
+          <KeyboardArrowRight />
         </Button>
       }
       backButton={
-        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-          {theme.direction === 'rtl' ? (
-            <KeyboardArrowRight />
-          ) : (
-            <KeyboardArrowLeft />
-          )}
+        <Button
+          data-testid="mobile-prev-btn"
+          size="small"
+          onClick={handleBack}
+          disabled={activeStep === 0}
+        >
+          <KeyboardArrowLeft />
           Back
         </Button>
       }

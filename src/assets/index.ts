@@ -1,6 +1,8 @@
 // @index('./*.{png,jpg,svg}', (f, _) => `export { default as img${_.pascalCase(f.name)} } from '${f.path}${f.ext}'`)
+export { default as imgCane } from './cane.svg';
 export { default as imgConversationPng } from './conversation_png.png';
 export { default as imgConversation } from './conversation.svg';
+export { default as imgCrutches } from './crutches.svg';
 export { default as imgHeart } from './heart.svg';
 export { default as imgLabeledProsthesis_1 } from './labeled_prosthesis_1.png';
 export { default as imgLabeledProsthesis_2 } from './labeled_prosthesis_2.png';
@@ -23,3 +25,6 @@ export { default as imgProsthesisLeg } from './prosthesis-leg.svg';
 export { default as imgProsthesisZebra } from './prosthesis-zebra.svg';
 export { default as imgProstheticLegs } from './prosthetic_legs.png';
 export { default as imgRoad } from './Road.svg';
+export { default as imgShowerChair } from './shower_chair.svg';
+export { default as imgWalker } from './walker.svg';
+export { default as imgWheelChair } from './wheel_chair.svg';

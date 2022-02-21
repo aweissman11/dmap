@@ -77,7 +77,12 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
   return (
     <div>
       <DesktopTitleGrid container justifyContent="center" alignItems="center">
-        <Typography variant="h1" align="center" sx={{ fontSize: '4rem' }}>
+        <Typography
+          data-testid="desktop-step-title"
+          variant="h1"
+          align="center"
+          sx={{ fontSize: '4rem' }}
+        >
           {steps[activeStep]?.title}
         </Typography>
       </DesktopTitleGrid>
