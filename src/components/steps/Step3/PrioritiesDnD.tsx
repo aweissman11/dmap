@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Paper, useTheme, styled } from '@mui/material';
+import { Grid, Paper, styled } from '@mui/material';
 import {
   DragDropContext,
   Draggable,
