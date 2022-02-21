@@ -7,7 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { Button, Container, Typography, Grid } from '@mui/material';
-import { Step1, Step2, Step4 } from '../../components/steps';
+import { Step1, Step2, Step3, Step4 } from '../../components/steps';
 import { MapStepper } from '../../components/MapStepper';
 
 function getSteps() {
@@ -94,7 +94,7 @@ export default function Map() {
           <Step2 />
         </Route>
         <Route exact path="/map/2">
-          <h1>2</h1>
+          <Step3 />
         </Route>
         <Route exact path="/map/3">
           <Step4 />
