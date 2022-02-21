@@ -1,7 +1,8 @@
 import { Grid, Paper, styled, Typography } from '@mui/material';
 
 import AgreeRadio from './AgreeRadio';
-import { imgLegIcon, imgConversationPng } from '../../../assets';
+import { imgConversationPng } from '../../../assets';
+import { BluePaper, Img, LegList } from '../../shared/styled_components';
 
 const QUESTIONS = [
   'When there is more than one option for a part of my prosthesis, I should be told about each one.*',
@@ -13,33 +14,6 @@ const PaddedPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   marginBottom: theme.spacing(1),
   width: '100%',
-}));
-
-const BluePaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
-  backgroundColor: theme.palette.primary.light,
-}));
-
-const QuestionsList = styled('ul')(({ theme }) => ({
-  // listStyle: `url(${imgProsthesisZebra})`,
-  fontSize: '1em',
-  '& > li': {
-    marginLeft: theme.spacing(2),
-    listStyle: 'none',
-    '&::before': {
-      content: "''",
-      display: 'inline-block',
-      height: 15,
-      width: 15,
-      backgroundImage: `url(${imgLegIcon})`,
-      marginRight: theme.spacing(1),
-    },
-  },
-}));
-
-const Img = styled('img')(({ theme }) => ({
-  width: '100%',
-  height: '100%',
 }));
 
 export default function Step2() {
@@ -84,7 +58,7 @@ export default function Step2() {
                   best prosthesis for you:
                 </b>
               </Typography>
-              <QuestionsList>
+              <LegList>
                 <li>What does your normal day look like?</li>
                 <li>Who helps or supports you at home?</li>
                 <li>What do you do for work and fun?</li>
@@ -92,7 +66,7 @@ export default function Step2() {
                   What do you see yourself doing with a prosthesis in a year?
                 </li>
                 <li>What are your concerns?</li>
-              </QuestionsList>
+              </LegList>
             </Grid>
             <Grid item xs={2}>
               <Img src={imgConversationPng} alt="conversation icon" />

@@ -3,46 +3,18 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Grid, Paper, styled } from '@mui/material';
+import { Grid, styled } from '@mui/material';
 
+import { BluePaper, Img, LegList } from '../../shared/styled_components';
 import {
   imgLabeledProsthesis_1,
   imgLabeledProsthesis_2,
   imgMedicalHelp,
-  imgLegIcon,
 } from '../../../assets';
 
 const HeadingType = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.pxToRem(25),
   fontWeight: theme.typography.fontWeightRegular,
-}));
-
-const Img = styled('img')(({ theme }) => ({
-  width: '100%',
-  height: 'auto',
-}));
-
-const BluePaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
-  backgroundColor: theme.palette.primary.light,
-}));
-
-const InsideList = styled('ul')(({ theme }) => ({
-  marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(2),
-  fontSize: '1em',
-  '& > li': {
-    marginLeft: theme.spacing(2),
-    listStyle: 'none',
-    '&::before': {
-      content: "''",
-      display: 'inline-block',
-      height: 15,
-      width: 15,
-      backgroundImage: `url(${imgLegIcon})`,
-      marginRight: theme.spacing(1),
-    },
-  },
 }));
 
 const LEG_COMPONENTS = [
@@ -153,7 +125,7 @@ export default function Step1() {
                 prosthesis and available prosthesis options.
               </Typography>
               <Typography component="div">
-                <InsideList>
+                <LegList>
                   <li>
                     <b>Medicare</b>
                   </li>
@@ -169,7 +141,7 @@ export default function Step1() {
                   <li>
                     <b>Copays</b>
                   </li>
-                </InsideList>
+                </LegList>
               </Typography>
               <Typography>
                 <b>RESOURCE:</b>{' '}
