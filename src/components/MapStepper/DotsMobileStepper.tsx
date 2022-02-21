@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import MobileStepper from '@mui/material/MobileStepper';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -16,8 +14,6 @@ export default function DotsMobileStepper({
   activeStep,
   setActiveStep,
 }: TDotsMobileStepperProps) {
-  const theme = useTheme();
-
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
