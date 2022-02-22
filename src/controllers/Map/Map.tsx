@@ -7,7 +7,14 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { Button, Container, Typography, Grid } from '@mui/material';
-import { Step1, Step2, Step3, Step4 } from '../../components/steps';
+import {
+  Step1,
+  Step2,
+  Step3,
+  Step4,
+  Step5,
+  Step6,
+} from '../../components/steps';
 import { MapStepper } from '../../components/MapStepper';
 
 function getSteps() {
@@ -63,6 +70,7 @@ export default function Map() {
     history.push(`/map/${newStep}`);
   };
 
+  // TODO: Fix these questions and show them on the page again
   function getStepContent(stepIndex: number) {
     switch (stepIndex) {
       case 0:
@@ -100,10 +108,10 @@ export default function Map() {
           <Step4 />
         </Route>
         <Route exact path="/map/4">
-          <h1>4</h1>
+          <Step5 />
         </Route>
         <Route exact path="/map/5">
-          <h1>5</h1>
+          <Step6 />
         </Route>
       </Switch>
       <Grid container justifyContent="center">
@@ -129,8 +137,8 @@ export default function Map() {
             </Button>
           </Grid>
         ) : (
-          <Grid item xs={12} container justifyContent="center">
-            <Grid item xs={12}>
+          <Grid item xs={12} container justifyContent="center" sx={{ mt: 6 }}>
+            {/* <Grid item xs={12}>
               <Typography
                 sx={{
                   mt: 1,
@@ -140,8 +148,14 @@ export default function Map() {
               >
                 {getStepContent(activeStep)}
               </Typography>
-            </Grid>
-            <Grid item xs={12} container justifyContent="center">
+            </Grid> */}
+            <Grid
+              item
+              xs={12}
+              container
+              justifyContent="center"
+              data-testid={getStepContent(activeStep)}
+            >
               <Button
                 data-testid="back-btn"
                 disabled={activeStep === 0}

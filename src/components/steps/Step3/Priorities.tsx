@@ -43,7 +43,7 @@ const PriorityCircle = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   margin: theme.spacing(2),
   position: 'relative',
-  // backgroundColor: theme.palette.primary.light,
+  backgroundColor: theme.palette.primary.light,
 }));
 
 const Icon = styled('img', {
