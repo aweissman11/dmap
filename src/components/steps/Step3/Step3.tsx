@@ -1,4 +1,5 @@
 import { Grid, Typography } from '@mui/material';
+import { StepTitleGrid } from '../../shared/styled_components';
 
 import PrioritiesDnD from './PrioritiesDnD';
 
@@ -6,7 +7,7 @@ export default function Step3() {
   return (
     <>
       <Grid container justifyContent="center">
-        <Grid item md={9} xs={12} sx={{ mb: 6 }}>
+        <StepTitleGrid item md={9} xs={12}>
           <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
             Your values, goals and lifestyle will help to inform the best
             prosthesis design for you.
@@ -21,7 +22,7 @@ export default function Step3() {
           >
             <b>What is important to you for your first prosthesis?</b>
           </Typography>
-        </Grid>
+        </StepTitleGrid>
         <Grid item md={8} xs={12} sx={{ mb: 8 }}>
           <Typography gutterBottom>
             You and your prosthetist will be working together to design the best

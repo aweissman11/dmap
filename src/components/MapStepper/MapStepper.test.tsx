@@ -4,6 +4,8 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import MapStepper from './MapStepper';
 
+window.scrollTo = jest.fn();
+
 describe('MapStepper', () => {
   type TStep = {
     title: string;

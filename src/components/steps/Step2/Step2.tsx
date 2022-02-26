@@ -2,7 +2,12 @@ import { Grid, Paper, styled, Typography } from '@mui/material';
 
 import AgreeRadio from './AgreeRadio';
 import { imgConversationPng } from '../../../assets';
-import { BluePaper, Img, LegList } from '../../shared/styled_components';
+import {
+  BluePaper,
+  Img,
+  LegList,
+  StepTitleGrid,
+} from '../../shared/styled_components';
 
 const QUESTIONS = [
   'When there is more than one option for a part of my prosthesis, I should be told about each one.*',
@@ -19,7 +24,7 @@ const PaddedPaper = styled(Paper)(({ theme }) => ({
 export default function Step2() {
   return (
     <Grid container data-testid="step-2" justifyContent="center">
-      <Grid item md={9} xs={12} sx={{ mb: 6 }}>
+      <StepTitleGrid item md={9} xs={12}>
         <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
           You and your prosthetist will work <b>together</b> to determine if a
           prosthesis will be useful for you.
@@ -33,7 +38,7 @@ export default function Step2() {
             information.
           </b>
         </Typography>
-      </Grid>
+      </StepTitleGrid>
       <Grid item md={8} xs={12}>
         {QUESTIONS.map(q => (
           <PaddedPaper key={q}>

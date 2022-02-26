@@ -16,10 +16,12 @@ export default function DotsMobileStepper({
 }: TDotsMobileStepperProps) {
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    window.scrollTo(0, 56);
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+    window.scrollTo(0, 56);
   };
 
   return (

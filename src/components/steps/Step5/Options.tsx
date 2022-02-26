@@ -1,24 +1,27 @@
 import Box from '@mui/material/Box';
-import { styled, Typography, Paper } from '@mui/material';
+import {
+  styled,
+  Typography,
+  Paper,
+  useTheme,
+  useMediaQuery,
+} from '@mui/material';
 import Masonry from '@mui/lab/Masonry';
 
 const labels = [
-  { text: 'Easy to use?', height: 'auto' },
-  { text: 'Durable?', height: 'auto' },
-  { text: 'Going to require help for me to use?', height: 'auto' },
-  { text: 'Heavy?', height: 'auto' },
-  { text: 'Going to fit in my pants and shoes?', height: 'auto' },
-  { text: 'Affordable?', height: 'auto' },
-  { text: 'Easy to move with?', height: 'auto' },
-  { text: 'Going to affect my endurance?', height: 'auto' },
-  { text: 'Comfortable?', height: 'auto' },
-  { text: 'Going to affect my balance?', height: 'auto' },
-  { text: 'Going to make sounds?', height: 'auto' },
-  {
-    text: 'Able to be used with sand, water, hills, dirt or grass?',
-    height: 'auto',
-  },
-  { text: 'Easy to clean?', height: 'auto' },
+  'Easy to use?',
+  'Durable?',
+  'Going to require help for me to use?',
+  'Heavy?',
+  'Going to fit in my pants and shoes?',
+  'Affordable?',
+  'Easy to move with?',
+  'Going to affect my endurance?',
+  'Comfortable?',
+  'Going to affect my balance?',
+  'Going to make sounds?',
+  'Able to be used with sand, water, hills, dirt or grass?',
+  'Easy to clean?',
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -30,12 +33,15 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BasicMasonry() {
+  const theme = useTheme();
+  const smScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <Box sx={{ maxWidth: 800, width: '100%' }}>
-      <Masonry columns={4} spacing={2}>
+      <Masonry columns={smScreen ? 2 : 4} spacing={2}>
         {labels.map((label, index) => (
-          <Item key={index} sx={{ height: label.height }}>
-            <Typography>{label.text}</Typography>
+          <Item key={index} sx={{ height: 'auto' }}>
+            <Typography>{label}</Typography>
           </Item>
         ))}
       </Masonry>

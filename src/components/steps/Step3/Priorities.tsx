@@ -1,4 +1,4 @@
-import { styled, Typography } from '@mui/material';
+import { Grid, Paper, styled, Typography } from '@mui/material';
 import { v4 as uuid } from 'uuid';
 import {
   imgBigCat,
@@ -30,308 +30,391 @@ import {
   imgWeightlifting,
   imgLawnMowing,
   imgGardening,
+  imgQuestionMark,
 } from '../../../assets';
 
-const PriorityCircle = styled('div')(({ theme }) => ({
-  height: 170,
-  width: 170,
-  borderRadius: '100%',
-  border: '1px solid black',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  flexDirection: 'column',
-  margin: theme.spacing(2),
-  position: 'relative',
-  backgroundColor: theme.palette.primary.light,
+const PriorityWrapper = styled(Paper)(({ theme }) => ({
+  width: 'calc(100% - 32px)',
+  margin: theme.spacing(1, 2),
+  pointerEvents: 'none',
+  backgroundColor: 'white',
+}));
+
+const PriorityType = styled(Typography)(({ theme }) => ({
+  fontSize: '1.5em',
+  marginLeft: theme.spacing(2),
+  [theme.breakpoints.down('md')]: {
+    fontSize: '1.2em',
+  },
 }));
 
 const Icon = styled('img', {
-  shouldForwardProp: (p: string) => !['left', 'top', 'size'].includes(p),
-})<{ left: number; top: number; size?: number }>(
-  ({ theme, left, top, size }) => ({
-    position: 'absolute',
-    height: size ? size : 110,
-    width: size ? size : 110,
-    left: left,
-    top: top,
-  }),
-);
+  shouldForwardProp: (p: string) => !['size'].includes(p),
+})<{ size?: number }>(({ theme, size }) => ({
+  height: size ? size : 90,
+  width: size ? size : 90,
+  [theme.breakpoints.down('md')]: {
+    height: 50,
+    width: 50,
+  },
+}));
 
 export const prioritiesList = [
   {
     id: uuid(),
+    name: 'Household Tasks',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Household Tasks</b>
-        </Typography>
-        <Icon src={imgVacuum} alt="Vacuum icon" left={0} top={50} />
-        <Icon
-          src={imgCooking}
-          alt="Cooking icon"
-          left={65}
-          top={53}
-          size={100}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Household Tasks</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgVacuum} alt="Vacuum icon" />
+            <Icon src={imgCooking} alt="Cooking icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Exercise',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Exercise</b>
-        </Typography>
-        <Icon
-          src={imgCycling}
-          alt="Bicycling icon"
-          left={-10}
-          top={30}
-          size={120}
-        />
-        <Icon
-          src={imgWeightlifting}
-          alt="Weightlifting icon"
-          left={65}
-          top={37}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Exercise</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgCycling} alt="Bicycling icon" />
+            <Icon src={imgWeightlifting} alt="Weightlifting icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Heavy Work',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Heavy Work</b>
-        </Typography>
-        <Icon
-          src={imgBigCat}
-          alt="Big Cat icon"
-          left={-10}
-          top={30}
-          size={140}
-        />
-        <Icon
-          src={imgCarryingBoxes}
-          alt="Carrying Boxes icon"
-          left={65}
-          top={37}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Heavy Work</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgBigCat} alt="Big Cat icon" />
+            <Icon src={imgCarryingBoxes} alt="Carrying Boxes icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Cost & Maintenance',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Cost & Maintenance</b>
-        </Typography>
-        <Icon
-          src={imgCostMaintenance}
-          alt="Cost Maintenance icon"
-          left={-5}
-          top={20}
-          size={170}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Cost & Maintenance</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgCostMaintenance} alt="Cost Maintenance icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Travel',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Travel</b>
-        </Typography>
-        <Icon src={imgCar} alt="Car icon" left={-10} top={10} />
-        <Icon src={imgPlane} alt="Plane icon" left={65} top={37} />
-        <Icon src={imgTrain} alt="Train icon" left={10} top={70} />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Travel</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgCar} alt="Car icon" />
+            <Icon src={imgPlane} alt="Plane icon" />
+            <Icon src={imgTrain} alt="Train icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Clothes & Shoes',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Clothes & Shoes</b>
-        </Typography>
-        <Icon
-          src={imgClothes_1}
-          alt="Clothes icon"
-          left={10}
-          top={50}
-          size={60}
-        />
-        <Icon
-          src={imgClothes_2}
-          alt="Clothes icon"
-          left={90}
-          top={50}
-          size={60}
-        />
-        <Icon
-          src={imgClothes_3}
-          alt="Clothes icon"
-          left={20}
-          top={90}
-          size={60}
-        />
-        <Icon
-          src={imgClothes_4}
-          alt="Clothes icon"
-          left={90}
-          top={90}
-          size={60}
-        />
-        <Icon
-          src={imgClothes_5}
-          alt="Clothes icon"
-          left={50}
-          top={50}
-          size={60}
-        />
-        <Icon
-          src={imgClothes_6}
-          alt="Clothes icon"
-          left={50}
-          top={90}
-          size={60}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Clothes & Shoes</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="center">
+            <Grid item xs={12} container justifyContent="center">
+              <Icon src={imgClothes_1} alt="Clothes icon" size={50} />
+              <Icon src={imgClothes_2} alt="Clothes icon" size={50} />
+              <Icon src={imgClothes_3} alt="Clothes icon" size={50} />
+            </Grid>
+            <Grid item xs={12} container justifyContent="center">
+              <Icon src={imgClothes_4} alt="Clothes icon" size={50} />
+              <Icon src={imgClothes_5} alt="Clothes icon" size={50} />
+              <Icon src={imgClothes_6} alt="Clothes icon" size={50} />
+            </Grid>
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Family & Caretaking',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Family & Caretaking</b>
-        </Typography>
-        <Icon src={imgFamily} alt="Family icon" left={-5} top={20} size={170} />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Family & Caretaking</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgFamily} alt="Family icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Sound & Appearance',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Sound & Appearance</b>
-        </Typography>
-        <Icon
-          src={imgProsthesisZebra}
-          alt="Prosthesis icon"
-          left={35}
-          top={70}
-          size={80}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Sound & Appearance</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgProsthesisZebra} alt="Prosthesis icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Sports',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Sports</b>
-        </Typography>
-        <Icon src={imgSoccer} alt="Soccer icon" left={-10} top={10} />
-        <Icon src={imgGolf} alt="Golf icon" left={65} top={37} />
-        <Icon
-          src={imgDribbling}
-          alt="Dribbling icon"
-          left={15}
-          top={80}
-          size={90}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Sports</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgSoccer} alt="Soccer icon" />
+            <Icon src={imgGolf} alt="Golf icon" />
+            <Icon src={imgDribbling} alt="Dribbling icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Comfort & Health',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Comfort & Health</b>
-        </Typography>
-        <Icon
-          src={imgFootElevated}
-          alt="Foot Elevated icon"
-          left={0}
-          top={50}
-        />
-        <Icon
-          src={imgFootUp}
-          alt="Foot Up icon"
-          left={65}
-          top={53}
-          size={100}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Comfort & Health</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgFootElevated} alt="Foot Elevated icon" />
+            <Icon src={imgFootUp} alt="Foot Up icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Outdoors',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Outdoors</b>
-        </Typography>
-        <Icon src={imgHiking} alt="Hiking icon" left={-10} top={15} />
-        <Icon src={imgMountains} alt="Mountains icon" left={70} top={16} />
-        <Icon src={imgWaves} alt="Waves icon" left={25} top={80} size={90} />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Outdoors</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgHiking} alt="Hiking icon" />
+            <Icon src={imgMountains} alt="Mountains icon" />
+            <Icon src={imgWaves} alt="Waves icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Intimacy & Relationships',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Intimacy & Relationships</b>
-        </Typography>
-        <Icon
-          src={imgBlackHeart}
-          alt="Heart icon"
-          left={22}
-          top={50}
-          size={120}
-        />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Intimacy & Relationships</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgBlackHeart} alt="Heart icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Yard Work',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Yard Work</b>
-        </Typography>
-        <Icon
-          src={imgLawnMowing}
-          alt="Lawn Mower icon"
-          left={0}
-          top={30}
-          size={90}
-        />
-        <Icon src={imgGardening} alt="Gardening icon" left={65} top={37} />
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Yard Work</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            <Icon src={imgLawnMowing} alt="Lawn Mower icon" />
+            <Icon src={imgGardening} alt="Gardening icon" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
   {
     id: uuid(),
+    name: 'Other',
     content: (
-      <PriorityCircle>
-        <Typography align="center" sx={{ mt: 2, maxWidth: '110px' }}>
-          <b>Other</b>
-        </Typography>
-        <Typography sx={{ fontSize: '8em', mt: '-30px' }}>?</Typography>
-      </PriorityCircle>
+      <PriorityWrapper>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <PriorityType>
+              <b>Other</b>
+            </PriorityType>
+          </Grid>
+          <Grid item xs={6} container justifyContent="space-evenly">
+            {/* <Typography sx={{ fontSize: '4em' }}>?</Typography> */}
+            <Icon src={imgQuestionMark} alt="Question Mark" />
+          </Grid>
+        </Grid>
+      </PriorityWrapper>
     ),
   },
 ];

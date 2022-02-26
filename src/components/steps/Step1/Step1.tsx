@@ -14,7 +14,12 @@ import {
   imgWalker,
   imgWheelChair,
 } from '../../../assets';
-import { BluePaper, Img, LegList } from '../../shared/styled_components';
+import {
+  BluePaper,
+  Img,
+  LegList,
+  StepTitleGrid,
+} from '../../shared/styled_components';
 
 const DeviceWrap = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -24,7 +29,8 @@ const DeviceWrap = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    marginLeft: theme.spacing(3),
+    width: 170,
+    margin: theme.spacing(0, 'auto', 2),
   },
 }));
 
@@ -61,7 +67,7 @@ export default function Step1() {
 
   return (
     <Grid container justifyContent="center">
-      <Grid item md={9} xs={12} sx={{ mb: 6 }}>
+      <StepTitleGrid item md={9} xs={12}>
         <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
           Everyone's recovery is at a different pace.
         </Typography>
@@ -77,7 +83,7 @@ export default function Step1() {
             needs.
           </b>
         </Typography>
-      </Grid>
+      </StepTitleGrid>
       <Grid item md={6} xs={12} sx={{ mb: 6 }}>
         <BluePaper>
           <Typography variant="h4" align="center">

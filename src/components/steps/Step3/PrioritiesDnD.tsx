@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Paper, styled } from '@mui/material';
+import { Grid, Paper, styled, useTheme } from '@mui/material';
 import {
   DragDropContext,
   Draggable,
@@ -11,6 +11,7 @@ import { prioritiesList } from './Priorities';
 
 type TItem = {
   id: string;
+  name: string;
   content: JSX.Element;
 };
 
@@ -28,9 +29,10 @@ const PaperPlate = styled(Paper)(({ theme }) => ({
   margin: theme.spacing(2, 'auto'),
   padding: theme.spacing(1),
   width: 420,
+  maxWidth: '100%',
   minHeight: 500,
-  display: 'flex',
-  flexWrap: 'wrap',
+  // display: 'flex',
+  // flexWrap: 'wrap',
   overflow: 'hidden',
   [theme.breakpoints.down('sm')]: {
     width: 404,
@@ -96,10 +98,11 @@ const onDragEnd = (
 };
 
 function PrioritiesDnD() {
+  const theme = useTheme();
   const [columns, setColumns] = useState(columnsFromBackend);
 
   return (
-    <Grid container justifyContent="space-between">
+    <Grid container justifyContent="space-between" id="dnd-context">
       <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns)}
       >
@@ -115,57 +118,56 @@ function PrioritiesDnD() {
               key={columnId}
             >
               <h2>{column.header}</h2>
-              <div>
-                <Droppable droppableId={columnId} key={columnId}>
-                  {(provided, snapshot) => {
-                    return (
-                      <PaperPlate
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
-                        // style={{
-                        //   background: snapshot.isDraggingOver
-                        //     ? theme.palette.secondary.main
-                        //     : theme.palette.common.white,
-                        // }}
-                      >
-                        {column.items.map((item, index) => {
-                          return (
-                            <Draggable
-                              key={item.id}
-                              draggableId={item.id}
-                              index={index}
-                            >
-                              {(provided, snapshot) => {
-                                return (
-                                  <div
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                    // style={{
-                                    //   userSelect: 'none',
-                                    //   padding: 16,
-                                    //   margin: '0 0 8px 0',
-                                    //   minHeight: '50px',
-                                    //   backgroundColor: snapshot.isDragging
-                                    //     ? theme.palette.primary.dark
-                                    //     : theme.palette.primary.main,
-                                    //   color: theme.palette.common.white,
-                                    //   ...provided.draggableProps.style,
-                                    // }}
-                                  >
-                                    {item.content}
-                                  </div>
-                                );
-                              }}
-                            </Draggable>
-                          );
-                        })}
-                        {provided.placeholder}
-                      </PaperPlate>
-                    );
-                  }}
-                </Droppable>
-              </div>
+              <Droppable droppableId={columnId} key={columnId}>
+                {(provided, snapshot) => {
+                  return (
+                    <PaperPlate
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                      style={{
+                        backgroundColor: snapshot.isDraggingOver
+                          ? theme.palette.primary.main
+                          : theme.palette.primary.light,
+                      }}
+                    >
+                      {column.items.map((item, index) => {
+                        return (
+                          <Draggable
+                            key={item.id}
+                            draggableId={item.id}
+                            index={index}
+                          >
+                            {(provided, snapshot) => {
+                              return (
+                                <div
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  // style={{ width: 640 }}
+                                  // style={{
+                                  //   userSelect: 'none',
+                                  //   padding: 16,
+                                  //   margin: '0 0 8px 0',
+                                  //   minHeight: '50px',
+                                  //   backgroundColor: snapshot.isDragging
+                                  //     ? theme.palette.primary.dark
+                                  //     : theme.palette.primary.main,
+                                  //   color: theme.palette.common.white,
+                                  //   ...provided.draggableProps.style,
+                                  // }}
+                                >
+                                  {item.content}
+                                </div>
+                              );
+                            }}
+                          </Draggable>
+                        );
+                      })}
+                      {provided.placeholder}
+                    </PaperPlate>
+                  );
+                }}
+              </Droppable>
               {column.footer.length ? <h2>{column.footer}</h2> : null}
             </Grid>
           );

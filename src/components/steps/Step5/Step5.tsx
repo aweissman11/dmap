@@ -1,13 +1,13 @@
 import { Grid, Paper, Typography } from '@mui/material';
 
 import { imgConversationPng } from '../../../assets';
-import { BluePaper, Img } from '../../shared/styled_components';
+import { BluePaper, Img, StepTitleGrid } from '../../shared/styled_components';
 import Options from './Options';
 
 export default function Step5() {
   return (
     <Grid container data-testid="step-2" justifyContent="center">
-      <Grid item md={9} xs={12} sx={{ mb: 6 }}>
+      <StepTitleGrid item md={9} xs={12}>
         <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
           Options for a prosthesis may be different in ways that matter to you.
         </Typography>
@@ -17,7 +17,7 @@ export default function Step5() {
         <Typography gutterBottom variant="h3" sx={{ fontSize: '2.5em', mt: 6 }}>
           <b>Ask your prosthetist questions to find what works best for you.</b>
         </Typography>
-      </Grid>
+      </StepTitleGrid>
       <Grid item md={8} xs={12} sx={{ mb: 6 }}>
         <Paper sx={{ p: 3, backgroundColor: theme => theme.palette.grey[200] }}>
           <Grid
