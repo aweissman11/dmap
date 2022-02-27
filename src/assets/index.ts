@@ -48,6 +48,7 @@ export { default as imgProsthesisFoot } from './prosthesis-foot.svg';
 export { default as imgProsthesisLeg } from './prosthesis-leg.svg';
 export { default as imgProsthesisZebra } from './prosthesis-zebra.svg';
 export { default as imgProstheticLegs } from './prosthetic_legs.png';
+export { default as imgQuestionMark } from './question_mark.svg';
 export { default as imgRoadSvg } from './road-svg.svg';
 export { default as imgRoad } from './Road.svg';
 export { default as imgShowerChair } from './shower_chair.svg';

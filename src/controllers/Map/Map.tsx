@@ -67,6 +67,7 @@ export default function Map() {
   }
 
   const goToStep = (newStep: number): void => {
+    window.scrollTo(0, 56);
     history.push(`/map/${newStep}`);
   };
 

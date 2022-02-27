@@ -87,7 +87,7 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
         </Typography>
       </DesktopTitleGrid>
       <DesktopStepWrapper>
-        <MarginBelowStepper activeStep={activeStep} alternativeLabel>
+        <MarginBelowStepper activeStep={activeStep || 0} alternativeLabel>
           {steps.map((step: TStep, ix: number) => (
             <ClickableStep
               data-testid={`step-btn-${ix}`}
@@ -102,7 +102,7 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
       <MobileStepWrapper>
         <DotsMobileStepper
           steps={steps.length}
-          activeStep={activeStep}
+          activeStep={activeStep || 0}
           setActiveStep={setActiveStep}
         />
       </MobileStepWrapper>

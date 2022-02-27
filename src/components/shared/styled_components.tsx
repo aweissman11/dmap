@@ -1,4 +1,4 @@
-import { Paper, styled } from '@mui/material';
+import { Grid, Paper, styled } from '@mui/material';
 import { imgLegIcon } from '../../assets';
 
 export const BluePaper = styled(Paper)(({ theme }) => ({
@@ -21,4 +21,11 @@ export const LegList = styled('ul')(({ theme }) => ({
 export const Img = styled('img')(({ theme }) => ({
   width: '100%',
   height: 'auto',
+}));
+
+export const StepTitleGrid = styled(Grid)(({ theme }) => ({
+  marginBottom: theme.spacing(6),
+  [theme.breakpoints.down('sm')]: {
+    textAlign: 'center',
+  },
 }));

@@ -1,4 +1,5 @@
 import { Grid, Paper, Typography } from '@mui/material';
+import { StepTitleGrid } from '../../shared/styled_components';
 
 import DesktopTimeline from './DesktopTimeline';
 import MobileTimeline from './MobileTimeline';
@@ -7,7 +8,7 @@ import MyJourney from './MyJourney';
 export default function Step5() {
   return (
     <Grid container data-testid="step-2" justifyContent="center">
-      <Grid item md={9} xs={12} sx={{ mb: 6 }}>
+      <StepTitleGrid item md={9} xs={12}>
         <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
           Everyone's timeline for getting a prosthesis and learning to use a
           prosthesis is different.
@@ -22,7 +23,7 @@ export default function Step5() {
             journey.
           </b>
         </Typography>
-      </Grid>
+      </StepTitleGrid>
       <Grid item md={8} xs={12} sx={{ mb: 6 }}>
         <Paper sx={{ p: 3, backgroundColor: theme => theme.palette.grey[200] }}>
           <Grid

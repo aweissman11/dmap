@@ -5,7 +5,12 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Grid, styled } from '@mui/material';
 
-import { BluePaper, Img, LegList } from '../../shared/styled_components';
+import {
+  BluePaper,
+  Img,
+  LegList,
+  StepTitleGrid,
+} from '../../shared/styled_components';
 import {
   imgLabeledProsthesis_1,
   imgLabeledProsthesis_2,
@@ -60,7 +65,7 @@ const LEG_COMPONENTS = [
 export default function Step1() {
   return (
     <Grid container justifyContent="center">
-      <Grid item md={9} xs={12} sx={{ mb: 6 }}>
+      <StepTitleGrid item md={9} xs={12}>
         <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
           You and your prosthetist will work <b>together</b> to design the best
           prosthesis for you.
@@ -72,7 +77,7 @@ export default function Step1() {
         <Typography gutterBottom variant="h3" sx={{ fontSize: '2.5em', mt: 6 }}>
           <b>Talk with your prosthetist about your prosthesis options.</b>
         </Typography>
-      </Grid>
+      </StepTitleGrid>
       <Grid container justifyContent="space-between" sx={{ mb: 6 }}>
         <Grid
           item
@@ -88,7 +93,14 @@ export default function Step1() {
           </Typography>
           <Img src={imgLabeledProsthesis_1} alt="Prosthetic leg diagram" />
         </Grid>
-        <Grid item xs={12} md={4} container alignItems="center">
+        <Grid
+          item
+          xs={12}
+          md={4}
+          container
+          alignItems="center"
+          sx={{ mt: 2, mb: 4 }}
+        >
           <div>
             {/* TODO: Add expand/collapse all button */}
             {LEG_COMPONENTS.map(cmp => (

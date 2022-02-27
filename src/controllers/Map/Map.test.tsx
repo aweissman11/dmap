@@ -4,6 +4,8 @@ import { MemoryRouter, Route } from 'react-router';
 
 import Map from './Map';
 
+window.scrollTo = jest.fn();
+
 window.matchMedia = query => ({
   matches: false,
   media: query,
