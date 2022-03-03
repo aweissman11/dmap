@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { Grid, Paper, styled, Typography } from '@mui/material';
 
 import AgreeRadio from './AgreeRadio';
@@ -8,12 +9,8 @@ import {
   LegList,
   StepTitleGrid,
 } from '../../shared/styled_components';
-
-const QUESTIONS = [
-  'When there is more than one option for a part of my prosthesis, I should be told about each one.*',
-  'I believe that my prosthetist needs to know everything about my medical history to take good care of me.*',
-  'I would rather have my prosthetist make decisions about what’s best for my prosthesis than to be given a whole lot of choices.*',
-];
+import { TImportance, TQuestionId } from '../../../types';
+import { AppCtx } from '../../../context/AppCtx';
 
 const PaddedPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -22,6 +19,13 @@ const PaddedPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Step2() {
+  const { surveyQuestions, answerSurveyQuestions } = useContext(AppCtx);
+
+  const answerQuestion = (id: TQuestionId, importance: TImportance) => {
+    surveyQuestions[id].importance = importance;
+    answerSurveyQuestions(surveyQuestions);
+  };
+
   return (
     <Grid container data-testid="step-2" justifyContent="center">
       <StepTitleGrid item md={9} xs={12}>
@@ -40,9 +44,13 @@ export default function Step2() {
         </Typography>
       </StepTitleGrid>
       <Grid item md={8} xs={12}>
-        {QUESTIONS.map(q => (
-          <PaddedPaper key={q}>
-            <AgreeRadio question={q} />
+        {Object.entries(surveyQuestions).map(q => (
+          <PaddedPaper key={q[0]}>
+            <AgreeRadio
+              id={q[0] as TQuestionId}
+              question={q[1]}
+              answerQuestion={answerQuestion}
+            />
           </PaddedPaper>
         ))}
       </Grid>

@@ -1,11 +1,4 @@
-import React from 'react';
-import {
-  fireEvent,
-  getByDisplayValue,
-  render,
-  screen,
-} from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import Step2 from './Step2';
 import AgreeRadio from './AgreeRadio';
@@ -16,19 +9,43 @@ describe('Step2', () => {
     const step2 = screen.getByTestId('step-2');
     expect(step2).toBeInTheDocument();
   });
+
+  test('answers a question', () => {
+    render(<Step2 />);
+
+    const disagree = screen.getAllByDisplayValue('disagree');
+    fireEvent.click(disagree[0], { target: { value: 'disagree' } });
+    expect((disagree[0] as HTMLInputElement).checked).toBe(false);
+  });
 });
 
 describe('AgreeRadio', () => {
   test('renders the radio', () => {
-    render(<AgreeRadio question="question-prop" />);
+    render(
+      <AgreeRadio
+        id="options"
+        question={{ importance: '', question: 'question-prop' }}
+        answerQuestion={() => {}}
+      />,
+    );
     const label = screen.getByText('question-prop');
     expect(label).toBeInTheDocument();
   });
 
   test('handleChange', () => {
-    render(<AgreeRadio question="question-prop" />);
+    const question = { importance: '', question: 'question-prop' };
+
+    const answerQuestion = () => (question.importance = 'disagree');
+
+    render(
+      <AgreeRadio
+        id="options"
+        question={question}
+        answerQuestion={answerQuestion}
+      />,
+    );
     const disagree = screen.getByDisplayValue('disagree');
     fireEvent.click(disagree, { target: { value: 'disagree' } });
-    expect((disagree as HTMLInputElement).checked).toBe(true);
+    expect((disagree as HTMLInputElement).checked).toBe(false);
   });
 });
