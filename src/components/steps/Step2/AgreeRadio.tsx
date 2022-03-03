@@ -5,6 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { styled } from '@mui/material';
+import { TQuestion, TImportance, TQuestionId } from '../../../types';
 
 const FlexibleRadioGroup = styled(RadioGroup)(({ theme }) => ({
   flexDirection: 'row',
@@ -14,7 +15,9 @@ const FlexibleRadioGroup = styled(RadioGroup)(({ theme }) => ({
 }));
 
 type AgreeRadioProps = {
-  question: string;
+  question: TQuestion;
+  id: TQuestionId;
+  answerQuestion: (id: TQuestionId, imp: TImportance) => void;
 };
 
 const AGREEMENT_LEVELS = [
@@ -40,20 +43,22 @@ const AGREEMENT_LEVELS = [
   },
 ];
 
-export default function AgreeRadio({ question }: AgreeRadioProps) {
-  const [value, setValue] = React.useState('');
-
+export default function AgreeRadio({
+  id,
+  question,
+  answerQuestion,
+}: AgreeRadioProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+    answerQuestion(id, (event.target as HTMLInputElement).value as TImportance);
   };
 
   return (
     <FormControl component="fieldset">
-      <FormLabel component="legend">{question}</FormLabel>
+      <FormLabel component="legend">{question.question}</FormLabel>
       <FlexibleRadioGroup
         aria-label="gender"
         name="gender1"
-        value={value}
+        value={question.importance}
         onChange={handleChange}
       >
         {AGREEMENT_LEVELS.map(lvl => (

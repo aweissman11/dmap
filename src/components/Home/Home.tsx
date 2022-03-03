@@ -23,7 +23,7 @@ const ButtonGrid = styled(Grid)(({ theme }) => ({
 
 export default function SimpleContainer() {
   return (
-    <HomeContainer maxWidth="xl">
+    <HomeContainer maxWidth="xl" data-testid="home-container">
       <RoadMap />
       <Title align="center" variant="h1">
         DECISION MAP
@@ -48,6 +48,7 @@ export default function SimpleContainer() {
           component={Link}
           to="/map/0"
           color="secondary"
+          data-testid="get_started"
         >
           Get Started
         </Button>

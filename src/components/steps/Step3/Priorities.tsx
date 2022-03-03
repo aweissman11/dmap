@@ -1,5 +1,4 @@
 import { Grid, Paper, styled, Typography } from '@mui/material';
-import { v4 as uuid } from 'uuid';
 import {
   imgBigCat,
   imgCar,
@@ -61,7 +60,7 @@ const Icon = styled('img', {
 
 export const prioritiesList = [
   {
-    id: uuid(),
+    id: 'household_tasks',
     name: 'Household Tasks',
     content: (
       <PriorityWrapper>
@@ -86,7 +85,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'exercise',
     name: 'Exercise',
     content: (
       <PriorityWrapper>
@@ -111,7 +110,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'heavy work',
     name: 'Heavy Work',
     content: (
       <PriorityWrapper>
@@ -136,7 +135,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'cost and maintenance',
     name: 'Cost & Maintenance',
     content: (
       <PriorityWrapper>
@@ -160,7 +159,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'travel',
     name: 'Travel',
     content: (
       <PriorityWrapper>
@@ -186,7 +185,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'clothes and shoes',
     name: 'Clothes & Shoes',
     content: (
       <PriorityWrapper>
@@ -219,7 +218,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'family and caretaking',
     name: 'Family & Caretaking',
     content: (
       <PriorityWrapper>
@@ -243,7 +242,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'sound and appearance',
     name: 'Sound & Appearance',
     content: (
       <PriorityWrapper>
@@ -267,7 +266,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'sports',
     name: 'Sports',
     content: (
       <PriorityWrapper>
@@ -293,7 +292,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'comfort and health',
     name: 'Comfort & Health',
     content: (
       <PriorityWrapper>
@@ -318,7 +317,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'outdoors',
     name: 'Outdoors',
     content: (
       <PriorityWrapper>
@@ -344,7 +343,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'intimacy and relationships',
     name: 'Intimacy & Relationships',
     content: (
       <PriorityWrapper>
@@ -368,7 +367,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'yard work',
     name: 'Yard Work',
     content: (
       <PriorityWrapper>
@@ -393,7 +392,7 @@ export const prioritiesList = [
     ),
   },
   {
-    id: uuid(),
+    id: 'other',
     name: 'Other',
     content: (
       <PriorityWrapper>

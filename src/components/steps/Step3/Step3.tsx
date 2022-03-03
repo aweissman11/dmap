@@ -1,9 +1,13 @@
 import { Grid, Typography } from '@mui/material';
+import { useContext } from 'react';
+import { AppCtx } from '../../../context/AppCtx';
 import { StepTitleGrid } from '../../shared/styled_components';
 
 import PrioritiesDnD from './PrioritiesDnD';
 
 export default function Step3() {
+  const { priorities, selectPriorities } = useContext(AppCtx);
+
   return (
     <>
       <Grid container justifyContent="center">
@@ -34,7 +38,10 @@ export default function Step3() {
             What is important to you for your first prosthesis?
           </Typography>
         </Grid>
-        <PrioritiesDnD />
+        <PrioritiesDnD
+          priorities={priorities}
+          selectPriorities={selectPriorities}
+        />
       </Grid>
     </>
   );
