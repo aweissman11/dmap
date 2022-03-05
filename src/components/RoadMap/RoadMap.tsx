@@ -151,7 +151,7 @@ type TRoadMapProps = {
   step?: number;
 };
 
-export default function RoadMap({ step }: TRoadMapProps) {
+function RoadMap({ step }: TRoadMapProps) {
   return (
     <RoadMapWrapper>
       <CssMap>
@@ -205,3 +205,4 @@ export default function RoadMap({ step }: TRoadMapProps) {
     </RoadMapWrapper>
   );
 }
+export default RoadMap;

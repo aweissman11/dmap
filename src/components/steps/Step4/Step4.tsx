@@ -66,15 +66,24 @@ export default function Step1() {
   return (
     <Grid container justifyContent="center">
       <StepTitleGrid item md={9} xs={12}>
-        <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
+        <Typography align="center" gutterBottom sx={{ fontSize: '1.8em' }}>
           You and your prosthetist will work <b>together</b> to design the best
           prosthesis for you.
         </Typography>
-        <Typography gutterBottom sx={{ fontSize: '1.8em', mt: 4 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          sx={{ fontSize: '1.8em', mt: 4 }}
+        >
           There are many parts that go into a prosthesis, with pros and cons for
           each part.
         </Typography>
-        <Typography gutterBottom variant="h3" sx={{ fontSize: '2.5em', mt: 6 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          variant="h3"
+          sx={{ fontSize: '2.5em', mt: 6 }}
+        >
           <b>Talk with your prosthetist about your prosthesis options.</b>
         </Typography>
       </StepTitleGrid>
@@ -166,7 +175,7 @@ export default function Step1() {
                 </a>
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} container alignItems="center">
               <Img src={imgMedicalHelp} alt="medical help icon" />
             </Grid>
           </Grid>

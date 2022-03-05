@@ -10,6 +10,7 @@ export { default as imgClothes_3 } from './clothes-3.svg';
 export { default as imgClothes_4 } from './clothes-4.svg';
 export { default as imgClothes_5 } from './clothes-5.svg';
 export { default as imgClothes_6 } from './clothes-6.svg';
+export { default as imgConstructionCone } from './construction-cone.svg';
 export { default as imgConversationPng } from './conversation_png.png';
 export { default as imgConversation } from './conversation.svg';
 export { default as imgCooking } from './cooking.svg';

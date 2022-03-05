@@ -6,7 +6,7 @@ import {
   useParams,
   Redirect,
 } from 'react-router-dom';
-import { Button, Container, Typography, Grid } from '@mui/material';
+import { Button, Container, Typography, Grid, styled } from '@mui/material';
 import {
   Step1,
   Step2,
@@ -16,6 +16,15 @@ import {
   Step6,
 } from '../../components/steps';
 import { MapStepper } from '../../components/MapStepper';
+
+const MapContainer = styled(Container)(({ theme }) => ({
+  paddingTop: theme.spacing(8),
+  paddingBottom: theme.spacing(8),
+  [theme.breakpoints.down('sm')]: {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+}));
 
 function getSteps() {
   return [
@@ -89,7 +98,7 @@ export default function Map() {
     }
   }
   return (
-    <Container maxWidth="xl" sx={{ pt: 8, pb: 8 }}>
+    <MapContainer maxWidth="xl">
       <MapStepper
         activeStep={activeStep}
         steps={steps}
@@ -177,6 +186,6 @@ export default function Map() {
           </Grid>
         )}
       </Grid>
-    </Container>
+    </MapContainer>
   );
 }

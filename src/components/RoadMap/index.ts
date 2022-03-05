@@ -1,2 +1,1 @@
-import RoadMap from './RoadMap';
-export default RoadMap;
+export { default as RoadMap } from './RoadMap';

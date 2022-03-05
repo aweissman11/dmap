@@ -235,7 +235,12 @@ export const prioritiesList = [
             </PriorityType>
           </Grid>
           <Grid item xs={6} container justifyContent="space-evenly">
-            <Icon src={imgFamily} alt="Family icon" />
+            <Icon
+              src={imgFamily}
+              alt="Family icon"
+              size={140}
+              sx={{ m: '-20px' }}
+            />
           </Grid>
         </Grid>
       </PriorityWrapper>

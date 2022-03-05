@@ -29,14 +29,23 @@ export default function Step2() {
   return (
     <Grid container data-testid="step-2" justifyContent="center">
       <StepTitleGrid item md={9} xs={12}>
-        <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
+        <Typography align="center" gutterBottom sx={{ fontSize: '1.8em' }}>
           You and your prosthetist will work <b>together</b> to determine if a
           prosthesis will be useful for you.
         </Typography>
-        <Typography gutterBottom sx={{ fontSize: '1.8em', mt: 4 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          sx={{ fontSize: '1.8em', mt: 4 }}
+        >
           There are many prosthesis options, and lots of information.
         </Typography>
-        <Typography gutterBottom variant="h3" sx={{ fontSize: '2.5em', mt: 6 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          variant="h3"
+          sx={{ fontSize: '2.5em', mt: 6 }}
+        >
           <b>
             Share with your prosthetist how you would like to talk about this
             information.

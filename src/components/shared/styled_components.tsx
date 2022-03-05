@@ -1,5 +1,5 @@
 import { Grid, Paper, styled } from '@mui/material';
-import { imgLegIcon } from '../../assets';
+import { imgConstructionCone, imgLegIcon } from '../../assets';
 
 export const BluePaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -15,6 +15,18 @@ export const LegList = styled('ul')(({ theme }) => ({
       fontSize: '2.1em',
       lineHeight: '.5em',
     },
+  },
+}));
+
+export const ConeList = styled('ul')(({ theme }) => ({
+  fontSize: '1em',
+  '& > li': {
+    marginLeft: theme.spacing(4),
+    background: `url(${imgConstructionCone}) no-repeat left center`,
+    padding: '7px 10px 5px 34px',
+    listStyle: 'none',
+    margin: 0,
+    verticalAlign: 'middle',
   },
 }));
 
