@@ -11,12 +11,18 @@ import {
   imgProsthesisFoot,
   imgOneLeg,
 } from '../../../assets';
-import { LegList } from '../../shared/styled_components';
+import { ConeList } from '../../shared/styled_components';
 import { Paper, styled } from '@mui/material';
 
-const DesktopTimeline = styled(Timeline)(({ theme }) => ({
+const MobileTimeline = styled(Timeline)(({ theme }) => ({
   alignItems: 'center',
   marginTop: theme.spacing(8),
+  maxWidth: '100%',
+  '& > li': {
+    '&::before': {
+      padding: 0,
+    },
+  },
   [theme.breakpoints.up(1300)]: {
     display: 'none',
   },
@@ -79,9 +85,9 @@ const RoadWarningSign = ({ icon }: TRoadWarningSignProps) => (
   </RoadSignWrapper>
 );
 
-export default function DesktopTimelineComponent() {
+export default function MobileTimelineComponent() {
   return (
-    <DesktopTimeline>
+    <MobileTimeline className="mobile-timeline">
       <TimelineItem>
         <TimelineSeparator>
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -100,12 +106,14 @@ export default function DesktopTimelineComponent() {
               pt: 1,
               pl: 1,
               pb: 1,
-              pr: 3,
+              pr: 1,
               width: 250,
             }}
           >
             <Typography sx={{ fontSize: '1.3em' }}>
-              Getting a Prosthesis
+              <u>
+                <b>Getting a Prosthesis</b>
+              </u>
             </Typography>
             <Typography>
               It may take several visits and weeks to make your prosthesis.
@@ -113,13 +121,13 @@ export default function DesktopTimelineComponent() {
             <Typography>
               Prosthesis design will be determined in the first 1-2 visits.
             </Typography>
-            <LegList>
+            <ConeList>
               <li>Meeting prosthetist</li>
               <li>Measuring</li>
               <li>Fitting</li>
               <li>Delivery</li>
               <li>Follow up</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -128,7 +136,9 @@ export default function DesktopTimelineComponent() {
         <TimelineSeparator>
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <RoadWarningSign icon="walker" />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
         </TimelineSeparator>
@@ -138,21 +148,23 @@ export default function DesktopTimelineComponent() {
               pt: 1,
               pl: 1,
               pb: 1,
-              pr: 3,
+              pr: 1,
               width: 250,
             }}
           >
             <Typography sx={{ fontSize: '1.3em' }}>
-              Prosthesis Training
+              <u>
+                <b>Prosthesis Training</b>
+              </u>
             </Typography>
-            <LegList>
+            <ConeList>
               <li>Physical Therapy</li>
               <li>Occupational Therapy</li>
               <li>Prosthetist</li>
               <li>At home</li>
               <li>In clinic</li>
               <li>At a rehabilitation center</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -162,7 +174,9 @@ export default function DesktopTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <RoadWarningSign icon="walker" />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -173,24 +187,26 @@ export default function DesktopTimelineComponent() {
               pt: 1,
               pl: 1,
               pb: 1,
-              pr: 3,
+              pr: 1,
               width: 250,
             }}
           >
             <Typography sx={{ fontSize: '1.3em' }}>
-              Prosthesis Changes
+              <u>
+                <b>Prosthesis Changes</b>
+              </u>
             </Typography>
             <Typography>
               Your prosthesis may need changes in the first 1-2 years.
             </Typography>
-            <LegList>
+            <ConeList>
               <li>New Sockets</li>
               <li>Suspension</li>
               <li>Liner</li>
               <li>Foot</li>
               <li>Knee</li>
               <li>Alignment</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -200,7 +216,9 @@ export default function DesktopTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <RoadWarningSign icon="walker" />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -211,25 +229,27 @@ export default function DesktopTimelineComponent() {
               pt: 1,
               pl: 1,
               pb: 1,
-              pr: 3,
+              pr: 1,
               width: 250,
             }}
           >
             <Typography sx={{ fontSize: '1.3em' }}>
-              Medical Necessity
+              <u>
+                <b>Medical Necessity</b>
+              </u>
             </Typography>
             <Typography>
               Prosthesis changes may depend on changes to your life, leg, health
               or barriers you might encounter.
             </Typography>
-            <LegList>
+            <ConeList>
               <li>Activity</li>
               <li>Health</li>
               <li>Pain</li>
               <li>Limb volume/shape</li>
               <li>Surgery</li>
               <li>Skin</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -240,7 +260,11 @@ export default function DesktopTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <RoadWarningSign icon="walker" />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -252,16 +276,20 @@ export default function DesktopTimelineComponent() {
               pt: 1,
               pl: 1,
               pb: 1,
-              pr: 3,
+              pr: 1,
               width: 250,
             }}
           >
-            <Typography sx={{ fontSize: '1.3em' }}>Life Changes</Typography>
+            <Typography sx={{ fontSize: '1.3em' }}>
+              <u>
+                <b>Life Changes</b>
+              </u>
+            </Typography>
             <Typography>
               A prosthesis may need to change to meet your needs over your
               lifetime.
             </Typography>
-            <LegList>
+            <ConeList>
               <li>Goals</li>
               <li>Values</li>
               <li>Activity</li>
@@ -272,7 +300,7 @@ export default function DesktopTimelineComponent() {
               <li>Social support</li>
               <li>Job</li>
               <li>Environment</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -281,7 +309,9 @@ export default function DesktopTimelineComponent() {
         <TimelineSeparator>
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <RoadWarningSign icon="walker" />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
         </TimelineSeparator>
@@ -291,19 +321,23 @@ export default function DesktopTimelineComponent() {
               pt: 1,
               pl: 1,
               pb: 1,
-              pr: 3,
+              pr: 1,
               width: 250,
             }}
           >
-            <Typography sx={{ fontSize: '1.3em' }}>Limb Changes</Typography>
-            <LegList>
+            <Typography sx={{ fontSize: '1.3em' }}>
+              <u>
+                <b>Limb Changes</b>
+              </u>
+            </Typography>
+            <ConeList>
               <li>Revision Surgeries</li>
               <li>Volume/Size/Shape</li>
               <li>Pain</li>
               <li>Bone</li>
               <li>Skin</li>
               <li>Muscle</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -316,6 +350,8 @@ export default function DesktopTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }}>
           <Paper
@@ -323,14 +359,16 @@ export default function DesktopTimelineComponent() {
               pt: 1,
               pl: 1,
               pb: 1,
-              pr: 3,
+              pr: 1,
               width: 250,
             }}
           >
             <Typography sx={{ fontSize: '1.3em' }}>
-              Age & Health Changes
+              <u>
+                <b>Age & Health Changes</b>
+              </u>
             </Typography>
-            <LegList>
+            <ConeList>
               <li>Arthritis</li>
               <li>Weight</li>
               <li>Balance</li>
@@ -339,10 +377,10 @@ export default function DesktopTimelineComponent() {
               <li>Strength</li>
               <li>Health</li>
               <li>Diet</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
-    </DesktopTimeline>
+    </MobileTimeline>
   );
 }

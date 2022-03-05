@@ -20,7 +20,11 @@ const JourneyText = styled(Typography)(({ theme }) => ({
 export default function MyJourney() {
   return (
     <StreetWrap>
-      <img src={imgSignStreet} alt="street sign" style={{ width: '100%' }} />
+      <img
+        src={imgSignStreet}
+        alt="street sign"
+        style={{ width: '100%', minWidth: 350 }}
+      />
       <JourneyText>My Journey</JourneyText>
     </StreetWrap>
   );

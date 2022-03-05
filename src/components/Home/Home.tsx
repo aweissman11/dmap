@@ -29,7 +29,7 @@ const Home = () => {
         DECISION MAP
       </Title>
       <Typography align="center" variant="h3">
-        Support for prosthetic design and selection
+        Decision-Making Aid for Lower Limb Prosthesis Design
       </Typography>
       <Typography gutterBottom align="center" sx={{ mt: 4 }}>
         This tool is designed to help you and your prosthetists work together

@@ -46,7 +46,7 @@ const PaperPlate = styled(Paper)(({ theme }) => ({
 function PrioritiesDnD(props: PrioritiesDnDInterface) {
   const defaultColumns = {
     [uuid()]: {
-      header: 'Priorities',
+      header: 'Example Priorities',
       footer: '',
       items: prioritiesList.filter(
         ({ id }) => !props.priorities.some(pr => pr.id === id),

@@ -9,15 +9,24 @@ export default function Step5() {
   return (
     <Grid container data-testid="step-2" justifyContent="center">
       <StepTitleGrid item md={9} xs={12}>
-        <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
+        <Typography align="center" gutterBottom sx={{ fontSize: '1.8em' }}>
           Everyone's timeline for getting a prosthesis and learning to use a
           prosthesis is different.
         </Typography>
-        <Typography gutterBottom sx={{ fontSize: '1.8em', mt: 4 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          sx={{ fontSize: '1.8em', mt: 4 }}
+        >
           Your prosthesis design may change as your body, life, and goals change
           over time.
         </Typography>
-        <Typography gutterBottom variant="h3" sx={{ fontSize: '2.5em', mt: 6 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          variant="h3"
+          sx={{ fontSize: '2.5em', mt: 6 }}
+        >
           <b>
             Talk with your prosthetist about potential decisions in your
             journey.

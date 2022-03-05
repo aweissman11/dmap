@@ -68,13 +68,21 @@ export default function Step1() {
   return (
     <Grid container justifyContent="center">
       <StepTitleGrid item md={9} xs={12}>
-        <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
+        <Typography align="center" gutterBottom sx={{ fontSize: '1.8em' }}>
           Everyone's recovery is at a different pace.
         </Typography>
-        <Typography gutterBottom sx={{ fontSize: '1.8em', mt: 4 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          sx={{ fontSize: '1.8em', mt: 4 }}
+        >
           Everyone's healing process is unique.
         </Typography>
-        <Typography gutterBottom sx={{ fontSize: '1.8em', mt: 4 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          sx={{ fontSize: '1.8em', mt: 4 }}
+        >
           It is normal to have strong feelings after amputation.
         </Typography>
         <Typography gutterBottom variant="h3" sx={{ fontSize: '2.5em', mt: 6 }}>
@@ -118,7 +126,7 @@ export default function Step1() {
               </LegList>
             </Paper>
             <Paper sx={{ width: '200px', padding: 2, mb: 2 }}>
-              <b>Gaining Strength:</b>
+              <b>Building Strength:</b>
               <LegList sx={{ mb: 1 }}>
                 <li>Exercises</li>
                 <li>Balance</li>

@@ -15,7 +15,7 @@ import {
   imgProsthesisFoot,
   imgOneLeg,
 } from '../../../assets';
-import { LegList } from '../../shared/styled_components';
+import { ConeList } from '../../shared/styled_components';
 import { Paper, styled } from '@mui/material';
 
 const DesktopTimeline = styled(Timeline)(({ theme }) => ({
@@ -122,13 +122,13 @@ export default function DesktopTimelineComponent() {
             <Typography>
               Prosthesis design will be determined in the first 1-2 visits.
             </Typography>
-            <LegList>
+            <ConeList>
               <li>Meeting prosthetist</li>
               <li>Measuring</li>
               <li>Fitting</li>
               <li>Delivery</li>
               <li>Follow up</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -142,7 +142,6 @@ export default function DesktopTimelineComponent() {
       <TimelineItem>
         <TimelineOppositeContent
           sx={{ m: 'auto 0', fontSize: '1.3em', fontWeight: 'bold' }}
-          color="text.secondary"
         >
           Prosthesis Training
         </TimelineOppositeContent>
@@ -166,14 +165,14 @@ export default function DesktopTimelineComponent() {
               textAlign: 'left',
             }}
           >
-            <LegList>
+            <ConeList>
               <li>Physical Therapy</li>
               <li>Occupational Therapy</li>
               <li>Prosthetist</li>
               <li>At home</li>
               <li>In clinic</li>
               <li>At a rehabilitation center</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -197,14 +196,14 @@ export default function DesktopTimelineComponent() {
             <Typography>
               Your prosthesis may need changes in the first 1-2 years.
             </Typography>
-            <LegList>
+            <ConeList>
               <li>New Sockets</li>
               <li>Suspension</li>
               <li>Liner</li>
               <li>Foot</li>
               <li>Knee</li>
               <li>Alignment</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -224,7 +223,6 @@ export default function DesktopTimelineComponent() {
             fontSize: '1.3em',
             fontWeight: 'bold',
           }}
-          color="text.secondary"
         >
           Medical Necessity
         </TimelineOppositeContent>
@@ -250,14 +248,14 @@ export default function DesktopTimelineComponent() {
               Prosthesis changes may depend on changes to your life, leg, health
               or barriers you might encounter.
             </Typography>
-            <LegList>
+            <ConeList>
               <li>Activity</li>
               <li>Health</li>
               <li>Pain</li>
               <li>Limb volume/shape</li>
               <li>Surgery</li>
               <li>Skin</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -296,7 +294,7 @@ export default function DesktopTimelineComponent() {
               A prosthesis may need to change to meet your needs over your
               lifetime.
             </Typography>
-            <LegList>
+            <ConeList>
               <li>Goals</li>
               <li>Values</li>
               <li>Activity</li>
@@ -307,7 +305,7 @@ export default function DesktopTimelineComponent() {
               <li>Social support</li>
               <li>Job</li>
               <li>Environment</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -325,7 +323,6 @@ export default function DesktopTimelineComponent() {
             fontSize: '1.3em',
             fontWeight: 'bold',
           }}
-          color="text.secondary"
         >
           Limb Changes
         </TimelineOppositeContent>
@@ -350,14 +347,14 @@ export default function DesktopTimelineComponent() {
               textAlign: 'left',
             }}
           >
-            <LegList>
+            <ConeList>
               <li>Revision Surgeries</li>
               <li>Volume/Size/Shape</li>
               <li>Pain</li>
               <li>Bone</li>
               <li>Skin</li>
               <li>Muscle</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -387,7 +384,7 @@ export default function DesktopTimelineComponent() {
               maxWidth: 300,
             }}
           >
-            <LegList>
+            <ConeList>
               <li>Arthritis</li>
               <li>Weight</li>
               <li>Balance</li>
@@ -396,7 +393,7 @@ export default function DesktopTimelineComponent() {
               <li>Strength</li>
               <li>Health</li>
               <li>Diet</li>
-            </LegList>
+            </ConeList>
           </Paper>
         </TimelineContent>
       </TimelineItem>

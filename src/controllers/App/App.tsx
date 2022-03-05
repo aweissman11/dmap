@@ -6,6 +6,7 @@ import { Nav } from '../../components/Nav';
 import { Map } from '../Map';
 import { AppStateProvider } from '../../context/AppCtx';
 import { default_theme } from './theme';
+import { Footer } from '../../components/Footer';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           </Router>
         </div>
       </AppStateProvider>
+      <Footer />
     </ThemeProvider>
   );
 }

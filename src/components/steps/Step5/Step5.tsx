@@ -8,13 +8,22 @@ export default function Step5() {
   return (
     <Grid container data-testid="step-2" justifyContent="center">
       <StepTitleGrid item md={9} xs={12}>
-        <Typography gutterBottom sx={{ fontSize: '1.8em' }}>
+        <Typography align="center" gutterBottom sx={{ fontSize: '1.8em' }}>
           Options for a prosthesis may be different in ways that matter to you.
         </Typography>
-        <Typography gutterBottom sx={{ fontSize: '1.8em', mt: 4 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          sx={{ fontSize: '1.8em', mt: 4 }}
+        >
           There are many ways to develop preferences for options.
         </Typography>
-        <Typography gutterBottom variant="h3" sx={{ fontSize: '2.5em', mt: 6 }}>
+        <Typography
+          align="center"
+          gutterBottom
+          variant="h3"
+          sx={{ fontSize: '2.5em', mt: 6 }}
+        >
           <b>Ask your prosthetist questions to find what works best for you.</b>
         </Typography>
       </StepTitleGrid>
@@ -81,7 +90,7 @@ export default function Step5() {
               <Typography sx={{ mb: 1 }}>
                 <u>
                   <b>RESOURCE:</b>
-                </u>
+                </u>{' '}
                 <a
                   href="https://www.amputee-coalition.org"
                   target="_blank"
@@ -100,7 +109,7 @@ export default function Step5() {
                 about their experience.
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} container alignItems="center">
               <Img src={imgConversationPng} alt="conversation icon" />
             </Grid>
           </Grid>
