@@ -1,8 +1,12 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import App from '../controllers/App';
-import { PRIORITIES_SELECTED } from '../types';
+import {
+  fireEvent,
+  render,
+  screen /* waitFor */,
+} from '@testing-library/react';
+import { App } from '../controllers/App';
+import { PRIORITIES_SELECTED, QUESTIONS_ANSWERED } from '../types';
 import { AppStateProvider } from './AppCtx';
-import { SURVEY_QUESTIONS, QUESTIONS_ANSWERED } from './constants';
+import { SURVEY_QUESTIONS } from './constants';
 import { AppReducer } from './AppReducer';
 import { prioritiesList } from '../components/steps/Step3/Priorities';
 

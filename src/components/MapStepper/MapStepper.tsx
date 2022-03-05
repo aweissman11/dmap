@@ -6,7 +6,7 @@ import {
   Typography,
   styled,
 } from '@mui/material';
-import RoadMap from '../RoadMap';
+import { RoadMap } from '../RoadMap';
 import DotsMobileStepper from './DotsMobileStepper';
 
 type TStep = {

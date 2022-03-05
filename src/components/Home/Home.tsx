@@ -2,7 +2,7 @@ import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 
 import { Button, Grid, Typography, styled } from '@mui/material';
-import RoadMap from '../RoadMap';
+import { RoadMap } from '../RoadMap';
 
 const HomeContainer = styled(Container)(({ theme }) => {
   return {
@@ -21,7 +21,7 @@ const ButtonGrid = styled(Grid)(({ theme }) => ({
   margin: theme.spacing(8, 'auto'),
 }));
 
-export default function SimpleContainer() {
+const Home = () => {
   return (
     <HomeContainer maxWidth="xl" data-testid="home-container">
       <RoadMap />
@@ -55,4 +55,6 @@ export default function SimpleContainer() {
       </ButtonGrid>
     </HomeContainer>
   );
-}
+};
+
+export default Home;

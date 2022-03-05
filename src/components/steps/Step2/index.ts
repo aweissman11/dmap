@@ -1,2 +1,1 @@
-import Step2 from './Step2';
-export default Step2;
+export { default as Step2 } from './Step2';
