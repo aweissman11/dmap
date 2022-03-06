@@ -14,6 +14,7 @@ import {
   Step4,
   Step5,
   Step6,
+  Step7,
 } from '../../components/steps';
 import { MapStepper } from '../../components/MapStepper';
 
@@ -52,6 +53,10 @@ function getSteps() {
       title: 'My Journey with a Prosthesis',
       summary: 'Journey',
     },
+    {
+      title: 'Print Decision Aid',
+      summary: 'Print',
+    },
   ];
 }
 
@@ -66,13 +71,21 @@ export default function Map() {
   const steps = getSteps();
 
   useEffect(() => {
+    window.scrollTo(0, 56);
+  }, []);
+
+  useEffect(() => {
     if (Number(step) !== activeStep) {
       setActiveStep(Number(step));
     }
   }, [step, activeStep, history]);
 
   if (step && isNaN(Number(step))) {
-    return <Redirect to="/map/0" />;
+    return <Redirect to="/map/1" />;
+  }
+
+  if (!step || (step && (Number(step) < 1 || Number(step) > steps.length))) {
+    return <Redirect to="/map/1" />;
   }
 
   const goToStep = (newStep: number): void => {
@@ -80,23 +93,6 @@ export default function Map() {
     history.push(`/map/${newStep}`);
   };
 
-  // TODO: Fix these questions and show them on the page again
-  function getStepContent(stepIndex: number) {
-    switch (stepIndex) {
-      case 0:
-        return 'How do you prefer to learn about prosthesis options?';
-      case 1:
-        return 'Consider your values associated with prosthesis design';
-      case 2:
-        return 'Methods & resources for achieving preferences';
-      case 3:
-        return 'Fitting & Fabrication, Training with prosthesis, Limb volume changes & Functional Goals';
-      case 4:
-        return 'Consider the prosthesis type and the timing of changes';
-      default:
-        return 'All set!';
-    }
-  }
   return (
     <MapContainer maxWidth="xl">
       <MapStepper
@@ -105,23 +101,26 @@ export default function Map() {
         setActiveStep={goToStep}
       />
       <Switch>
-        <Route exact path="/map/0">
+        <Route exact path="/map/1">
           <Step1 />
         </Route>
-        <Route exact path="/map/1">
+        <Route exact path="/map/2">
           <Step2 />
         </Route>
-        <Route exact path="/map/2">
+        <Route exact path="/map/3">
           <Step3 />
         </Route>
-        <Route exact path="/map/3">
+        <Route exact path="/map/4">
           <Step4 />
         </Route>
-        <Route exact path="/map/4">
+        <Route exact path="/map/5">
           <Step5 />
         </Route>
-        <Route exact path="/map/5">
+        <Route exact path="/map/6">
           <Step6 />
+        </Route>
+        <Route exact path="/map/7">
+          <Step7 />
         </Route>
       </Switch>
       <Grid container justifyContent="center">
@@ -142,7 +141,7 @@ export default function Map() {
             >
               All steps completed
             </Typography>
-            <Button data-testid="reset-btn" onClick={() => goToStep(0)}>
+            <Button data-testid="reset-btn" onClick={() => goToStep(1)}>
               Reset
             </Button>
           </Grid>
@@ -164,7 +163,9 @@ export default function Map() {
               xs={12}
               container
               justifyContent="center"
-              data-testid={getStepContent(activeStep)}
+              data-testid={
+                activeStep ? steps[activeStep].summary : 'no-active-step'
+              }
             >
               <Button
                 data-testid="back-btn"

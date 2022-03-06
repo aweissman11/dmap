@@ -31,8 +31,8 @@ const RoadMapWrap = styled('div', {
   shouldForwardProp: p => p !== 'step',
 })<{ step: number }>(({ theme, step }) => ({
   position: 'relative',
-  zIndex: -1,
   [theme.breakpoints.up('md')]: {
+    zIndex: -1,
     marginTop: step % 2 === 0 ? -40 : -120,
     marginBottom: step % 2 === 0 ? -80 : -20,
   },
@@ -67,7 +67,10 @@ const MarginBelowStepper = styled(Stepper)(({ theme }) => ({
   marginBottom: theme.spacing(6),
 }));
 
-const ClickableStep = styled(Step)(() => ({
+const ClickableStep = styled(Step)(({ theme }) => ({
+  '& .Mui-active circle': {
+    color: theme.palette.secondary.main,
+  },
   '& span': {
     cursor: 'pointer',
   },
@@ -83,16 +86,16 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
           align="center"
           sx={{ fontSize: '4rem' }}
         >
-          {steps[activeStep]?.title}
+          {steps[activeStep - 1]?.title}
         </Typography>
       </DesktopTitleGrid>
       <DesktopStepWrapper>
-        <MarginBelowStepper activeStep={activeStep || 0} alternativeLabel>
+        <MarginBelowStepper activeStep={activeStep - 1 || 0} alternativeLabel>
           {steps.map((step: TStep, ix: number) => (
             <ClickableStep
               data-testid={`step-btn-${ix}`}
               key={`${step?.summary}${ix}`}
-              onClick={() => setActiveStep(ix)}
+              onClick={() => setActiveStep(ix + 1)}
             >
               <StepLabel>{step.summary}</StepLabel>
             </ClickableStep>
@@ -107,10 +110,10 @@ function MapStepper({ activeStep, steps, setActiveStep }: TMapStepperProps) {
         />
       </MobileStepWrapper>
       <MobileTitle variant="h4" align="center" sx={{ mb: 6 }}>
-        {steps[activeStep]?.title}
+        {steps[activeStep - 1]?.title}
       </MobileTitle>
-      <RoadMapWrap step={activeStep}>
-        <RoadMap step={activeStep + 1} />
+      <RoadMapWrap step={activeStep - 1}>
+        <RoadMap step={activeStep} steps={steps} />
       </RoadMapWrap>
     </div>
   );

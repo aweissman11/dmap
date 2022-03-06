@@ -5,7 +5,8 @@ import Typography from '@mui/material/Typography';
 // import IconButton from '@mui/material/IconButton';
 // import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import { styled } from '@mui/material';
+import { IconButton, styled } from '@mui/material';
+import { PictureAsPdf } from '@mui/icons-material';
 
 const Root = styled('div')(({ theme }) => ({
   flexGrow: 1,
@@ -39,7 +40,15 @@ export default function ButtonAppBar() {
           <Title variant="h6">
             <Link to="/">D-Map</Link>
           </Title>
-          {/* <Button color="inherit">Login</Button> */}
+          <a
+            href="https://dmap-files.s3.us-west-2.amazonaws.com/dmap_prototype.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <IconButton sx={{ color: 'white' }} title="PDF Version">
+              <PictureAsPdf />
+            </IconButton>
+          </a>
         </Toolbar>
       </AppBar>
     </Root>

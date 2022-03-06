@@ -40,6 +40,7 @@ export { default as imgMedicalHelp } from './medical-help.png';
 export { default as imgMountains } from './mountains.svg';
 export { default as imgOneCrutch } from './one_crutch.svg';
 export { default as imgOneLeg } from './one_leg.svg';
+export { default as imgPdfThumbnail } from './pdf_thumbnail.png';
 export { default as imgPlane } from './plane.svg';
 export { default as imgPresentationRoadMap } from './presentation_road_map.png';
 export { default as imgProsAndCons } from './pros-and-cons.svg';

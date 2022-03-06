@@ -45,7 +45,7 @@ describe('MapStepper', () => {
       setActiveStep: () => {},
     });
 
-    await waitFor(() => getAllByText(/active-title/i));
+    await waitFor(() => getAllByText(/active-step/i));
   });
 
   test('renders on mobile', async () => {
@@ -84,7 +84,7 @@ describe('MapStepper', () => {
     // await waitFor(() => screen.getByRole('heading'));
 
     expect(screen.getByTestId('desktop-step-title')).toHaveTextContent(
-      'active-title-1',
+      'active-title',
     );
   });
 

@@ -41,3 +41,11 @@ export const StepTitleGrid = styled(Grid)(({ theme }) => ({
     textAlign: 'center',
   },
 }));
+
+export const Thumbnail = styled('img')(({ theme }) => ({
+  height: 'auto',
+  width: 250,
+  borderRadius: theme.shape.borderRadius,
+  border: `1px solid ${theme.palette.grey[300]}`,
+  cursor: 'pointer',
+}));

@@ -7,6 +7,8 @@ import { Map } from '../Map';
 import { AppStateProvider } from '../../context/AppCtx';
 import { default_theme } from './theme';
 import { Footer } from '../../components/Footer';
+import { PrintPage } from '../../components/PrintPage';
+import { FourOFourPage } from '../../components/FourOFourPage';
 
 function App() {
   return (
@@ -14,19 +16,27 @@ function App() {
       <AppStateProvider>
         <div className="App">
           <Router>
-            <Nav />
             <Switch>
+              <Route path="/print">
+                <PrintPage />
+              </Route>
+              <Route exact path="/map/:step?">
+                <Nav />
+                <Map />
+              </Route>
               <Route exact path="/">
+                <Nav />
                 <Home />
               </Route>
-              <Route path="/map/:step?">
-                <Map />
+              <Route path="/">
+                <Nav />
+                <FourOFourPage />
               </Route>
             </Switch>
           </Router>
+          <Footer />
         </div>
       </AppStateProvider>
-      <Footer />
     </ThemeProvider>
   );
 }

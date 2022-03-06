@@ -28,7 +28,7 @@ describe('AgreeRadio', () => {
         answerQuestion={() => {}}
       />,
     );
-    const label = screen.getByText('question-prop');
+    const label = screen.getByText('question-prop*');
     expect(label).toBeInTheDocument();
   });
 
