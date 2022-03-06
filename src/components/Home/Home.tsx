@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 import { Button, Grid, Typography, styled } from '@mui/material';
 import { RoadMap } from '../RoadMap';
+import { BluePaper, Thumbnail } from '../shared/styled_components';
+import { imgPdfThumbnail } from '../../assets';
+import { PlayCircleOutline } from '@mui/icons-material';
+import { useEffect } from 'react';
 
 const HomeContainer = styled(Container)(({ theme }) => {
   return {
@@ -18,10 +22,14 @@ const Title = styled(Typography)(({ theme }) => ({
 }));
 
 const ButtonGrid = styled(Grid)(({ theme }) => ({
-  margin: theme.spacing(8, 'auto'),
+  margin: theme.spacing(12, 'auto'),
 }));
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <HomeContainer maxWidth="xl" data-testid="home-container">
       <RoadMap />
@@ -46,13 +54,34 @@ const Home = () => {
         <Button
           variant="contained"
           component={Link}
-          to="/map/0"
+          to="/map/1"
           color="secondary"
           data-testid="get_started"
+          sx={{ width: 275, height: 75, fontSize: '1.8em' }}
+          endIcon={<PlayCircleOutline sx={{ fontSize: '1.4em !important' }} />}
         >
           Get Started
         </Button>
       </ButtonGrid>
+
+      <Grid container justifyContent="center">
+        <Grid item md={7} xs={12} sx={{ mb: 6 }}>
+          <BluePaper>
+            <Grid container direction="column" alignItems="center">
+              <a
+                href="https://dmap-files.s3.us-west-2.amazonaws.com/dmap_prototype.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Thumbnail src={imgPdfThumbnail} alt="PDF Thumbnail" />
+              </a>
+              <Typography gutterBottom variant="h3" sx={{ fontSize: '1.5em' }}>
+                <b>Click here to print a paper version of this decision aid</b>
+              </Typography>
+            </Grid>
+          </BluePaper>
+        </Grid>
+      </Grid>
     </HomeContainer>
   );
 };

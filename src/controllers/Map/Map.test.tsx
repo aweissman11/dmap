@@ -34,80 +34,77 @@ describe('Map', () => {
   test('renders the first step', async () => {
     const { getByTestId } = renderComponent({ step: 0 });
 
-    await waitFor(() =>
-      getByTestId(/How do you prefer to learn about prosthesis options?/i),
-    );
+    await waitFor(() => getByTestId(/step-btn-1/i));
   });
 
   test('renders the first step when there is no param', async () => {
     const { getByTestId } = renderComponent({ step: undefined });
 
-    await waitFor(() =>
-      getByTestId(/How do you prefer to learn about prosthesis options?/i),
-    );
+    await waitFor(() => getByTestId(/step-btn-1/i));
   });
 
   test('handleNext', async () => {
-    const { getByTestId } = renderComponent({ step: 0 });
+    const { getAllByText } = renderComponent({ step: 0 });
     const nextBtn = await screen.findByTestId('next-btn');
 
     fireEvent.click(nextBtn);
     await waitFor(() => {
-      getByTestId(/Consider your values associated with prosthesis design/i);
+      getAllByText(/Communication/i)[0];
     });
 
     fireEvent.click(nextBtn);
     await waitFor(() => {
-      getByTestId(/Methods & resources for achieving preferences/i);
+      getAllByText(/Values/i)[0];
     });
 
     fireEvent.click(nextBtn);
     await waitFor(() => {
-      getByTestId(
-        /Fitting & Fabrication, Training with prosthesis, Limb volume changes & Functional Goals/i,
-      );
+      getAllByText(/First Prosthesis/i)[0];
     });
 
     fireEvent.click(nextBtn);
     await waitFor(() => {
-      getByTestId(/Consider the prosthesis type and the timing of changes/i);
+      getAllByText(/Preferences/i)[0];
     });
 
     fireEvent.click(nextBtn);
     await waitFor(() => {
-      getByTestId(/All set!/i);
+      getAllByText(/Journey/i)[0];
+    });
+
+    fireEvent.click(nextBtn);
+    await waitFor(() => {
+      getAllByText(/Print/i)[0];
     });
   });
 
   test('handleBack', async () => {
-    const { getByTestId } = renderComponent({ step: 3 });
+    const { getByText } = renderComponent({ step: 3 });
     const backBtn = await screen.findByTestId('back-btn');
     fireEvent.click(backBtn);
 
     await waitFor(() => {
-      getByTestId(/Methods & resources for achieving preferences/i);
+      getByText(/Values/i);
     });
   });
 
   test('handleReset', async () => {
-    const { getByTestId } = renderComponent({ step: 6 });
+    const { getAllByText } = renderComponent({ step: 7 });
     const resetBtn = await screen.findByTestId('reset-btn');
     fireEvent.click(resetBtn);
 
     await waitFor(() => {
-      getByTestId(/How do you prefer to learn about prosthesis options?/i);
+      getAllByText(/Amputation/i)[0];
     });
   });
 
   test('click step button', async () => {
-    const { getByTestId } = renderComponent({ step: 6 });
-    const stepBtn = await screen.findByTestId('step-btn-3');
+    const { getByText } = renderComponent({ step: 6 });
+    const stepBtn = await screen.findByTestId('step-btn-4');
     fireEvent.click(stepBtn);
 
     await waitFor(() => {
-      getByTestId(
-        /Fitting & Fabrication, Training with prosthesis, Limb volume changes & Functional Goals/i,
-      );
+      getByText(/First Prosthesis/i);
     });
   });
 });

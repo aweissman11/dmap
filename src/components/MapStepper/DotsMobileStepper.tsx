@@ -30,14 +30,14 @@ export default function DotsMobileStepper({
       variant="dots"
       steps={steps}
       position="static"
-      activeStep={activeStep}
+      activeStep={activeStep - 1}
       sx={{ maxWidth: 400, flexGrow: 1, mb: 4, mt: '-32px' }}
       nextButton={
         <Button
           data-testid="mobile-next-btn"
           size="small"
           onClick={handleNext}
-          disabled={activeStep === 5}
+          disabled={activeStep === steps}
         >
           Next
           <KeyboardArrowRight />

@@ -20,28 +20,13 @@ type AgreeRadioProps = {
   answerQuestion: (id: TQuestionId, imp: TImportance) => void;
 };
 
-const AGREEMENT_LEVELS = [
-  {
-    val: 'str_disagree',
-    title: 'Strongly Disagree',
-  },
-  {
-    val: 'disagree',
-    title: 'Disagree',
-  },
-  {
-    val: 'neutral',
-    title: 'Neutral',
-  },
-  {
-    val: 'agree',
-    title: 'Agree',
-  },
-  {
-    val: 'str_agree',
-    title: 'Strongly Agree',
-  },
-];
+export const AGREEMENT_LEVELS = {
+  str_disagree: 'Strongly Disagree',
+  disagree: 'Disagree',
+  neutral: 'Neutral',
+  agree: 'Agree',
+  str_agree: 'Strongly Agree',
+};
 
 export default function AgreeRadio({
   id,
@@ -54,19 +39,19 @@ export default function AgreeRadio({
 
   return (
     <FormControl component="fieldset">
-      <FormLabel component="legend">{question.question}</FormLabel>
+      <FormLabel component="legend">{question.question}*</FormLabel>
       <FlexibleRadioGroup
         aria-label="gender"
         name="gender1"
         value={question.importance}
         onChange={handleChange}
       >
-        {AGREEMENT_LEVELS.map(lvl => (
+        {Object.entries(AGREEMENT_LEVELS).map(lvl => (
           <FormControlLabel
-            key={lvl.val}
-            value={lvl.val}
+            key={lvl[0]}
+            value={lvl[0]}
             control={<Radio />}
-            label={lvl.title}
+            label={lvl[1]}
           />
         ))}
       </FlexibleRadioGroup>

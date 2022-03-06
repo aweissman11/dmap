@@ -1,13 +1,18 @@
-import { Container, styled, Typography } from '@mui/material';
+import { Container, styled, Typography, useMediaQuery } from '@mui/material';
 
-const FooterWrap = styled('footer')(({ theme }) => ({
-  backgroundColor: theme.palette.grey[200],
+const FooterWrap = styled('footer', {
+  shouldForwardProp: p => p !== 'printMode',
+})<{ printMode: boolean }>(({ theme, printMode }) => ({
+  backgroundColor: printMode ? 'transparent' : theme.palette.grey[200],
   padding: theme.spacing(6, 3),
+  border: printMode ? '1px solid black' : 'none',
 }));
 
 export default function Footer() {
+  const printMode = useMediaQuery('print');
+
   return (
-    <FooterWrap>
+    <FooterWrap printMode={printMode}>
       <Container>
         <Typography sx={{ fontSize: '1.2em', pb: 2 }} align="center">
           This project is funded by The Orthotics and Prosthetics Research

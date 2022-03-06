@@ -48,15 +48,19 @@ const PriorityType = styled(Typography)(({ theme }) => ({
 }));
 
 const Icon = styled('img', {
-  shouldForwardProp: (p: string) => !['size'].includes(p),
-})<{ size?: number }>(({ theme, size }) => ({
-  height: size ? size : 90,
-  width: size ? size : 90,
-  [theme.breakpoints.down('md')]: {
-    height: 50,
-    width: 50,
-  },
-}));
+  shouldForwardProp: (p: string) => !['size', 'minusMargin'].includes(p),
+})<{ size?: number; minusMargin?: boolean }>(
+  ({ theme, size, minusMargin }) => ({
+    height: size ? size : 90,
+    width: size ? size : 90,
+    margin: minusMargin ? -20 : 0,
+    [theme.breakpoints.down('md')]: {
+      height: size ? size / 2 : 50,
+      width: size ? size / 2 : 50,
+      margin: minusMargin ? '-5px -10px -10px -10px' : 0,
+    },
+  }),
+);
 
 export const prioritiesList = [
   {
@@ -152,7 +156,12 @@ export const prioritiesList = [
             </PriorityType>
           </Grid>
           <Grid item xs={6} container justifyContent="space-evenly">
-            <Icon src={imgCostMaintenance} alt="Cost Maintenance icon" />
+            <Icon
+              src={imgCostMaintenance}
+              alt="Cost Maintenance icon"
+              size={120}
+              minusMargin
+            />
           </Grid>
         </Grid>
       </PriorityWrapper>
@@ -235,12 +244,7 @@ export const prioritiesList = [
             </PriorityType>
           </Grid>
           <Grid item xs={6} container justifyContent="space-evenly">
-            <Icon
-              src={imgFamily}
-              alt="Family icon"
-              size={140}
-              sx={{ m: '-20px' }}
-            />
+            <Icon src={imgFamily} alt="Family icon" size={140} minusMargin />
           </Grid>
         </Grid>
       </PriorityWrapper>

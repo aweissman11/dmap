@@ -1,4 +1,6 @@
-import { styled } from '@mui/material';
+import { Menu, MenuItem, styled, useMediaQuery, useTheme } from '@mui/material';
+import { useState } from 'react';
+import { useHistory } from 'react-router';
 import {
   imgConversation,
   imgHeart,
@@ -37,44 +39,16 @@ const CssMap = styled('div')(({ theme }) => ({
   },
 }));
 
-const MapImage = styled('div', {
-  shouldForwardProp: p => p !== 'step',
-})<{ step: number }>(({ theme, step }) => {
-  let image = imgMapAllSteps;
-  switch (step) {
-    case 1:
-      image = imgMapStep_1;
-      break;
-    case 2:
-      image = imgMapStep_2;
-      break;
-    case 3:
-      image = imgMapStep_3;
-      break;
-    case 4:
-      image = imgMapStep_4;
-      break;
-    case 5:
-      image = imgMapStep_5;
-      break;
-    case 6:
-      image = imgMapStep_6;
-      break;
-    default:
-      break;
-  }
-  return {
-    height: '100%',
-    width: '100%',
-    backgroundImage: `url(${image})`,
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  };
-});
+const MapImage = styled('img', {
+  shouldForwardProp: p => p !== 'printMode',
+})<{ printMode: boolean }>(({ theme, printMode }) => ({
+  height: '100%',
+  width: '100%',
+  cursor: 'pointer',
+  [theme.breakpoints.up('md')]: {
+    display: printMode ? 'block' : 'none',
+  },
+}));
 
 const HomeImage = styled('img')(({ theme }) => ({
   position: 'absolute',
@@ -147,11 +121,54 @@ const OneLeg = styled('div')(({ theme }) => ({
   backgroundImage: `url(${imgOneLeg})`,
 }));
 
-type TRoadMapProps = {
-  step?: number;
+type TStepObj = {
+  title: string;
+  summary: string;
 };
 
-function RoadMap({ step }: TRoadMapProps) {
+type TRoadMapProps = {
+  step?: number;
+  steps?: TStepObj[];
+};
+
+function RoadMap({ step, steps }: TRoadMapProps) {
+  const history = useHistory();
+  const theme = useTheme();
+  const printMode = useMediaQuery('print');
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLImageElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleStepMenu = (stepIx: number) => {
+    handleClose();
+    history.push(`/map/${stepIx + 1}`);
+  };
+
+  const getImgSrc = () => {
+    switch (step) {
+      case 1:
+        return imgMapStep_1;
+      case 2:
+        return imgMapStep_2;
+      case 3:
+        return imgMapStep_3;
+      case 4:
+        return imgMapStep_4;
+      case 5:
+        return imgMapStep_5;
+      case 6:
+        return imgMapStep_6;
+      default:
+        return imgMapAllSteps;
+    }
+  };
+
   return (
     <RoadMapWrapper>
       <CssMap>
@@ -201,7 +218,33 @@ function RoadMap({ step }: TRoadMapProps) {
         )}
       </CssMap>
 
-      <MapImage step={step || 0} />
+      <MapImage src={getImgSrc()} printMode={printMode} onClick={handleClick} />
+      {steps && (
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          {steps.map((s, ix) => (
+            <MenuItem
+              key={s.summary}
+              sx={{
+                backgroundColor:
+                  step === ix + 1
+                    ? theme.palette.grey[300]
+                    : theme.palette.common.white,
+              }}
+              onClick={() => handleStepMenu(ix)}
+            >
+              {ix + 1}. {s.summary}
+            </MenuItem>
+          ))}
+        </Menu>
+      )}
     </RoadMapWrapper>
   );
 }
