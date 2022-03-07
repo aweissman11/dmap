@@ -147,17 +147,6 @@ export default function Map() {
           </Grid>
         ) : (
           <Grid item xs={12} container justifyContent="center" sx={{ mt: 6 }}>
-            {/* <Grid item xs={12}>
-              <Typography
-                sx={{
-                  mt: 1,
-                  mb: 1,
-                }}
-                align="center"
-              >
-                {getStepContent(activeStep)}
-              </Typography>
-            </Grid> */}
             <Grid
               item
               xs={12}
