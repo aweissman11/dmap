@@ -43,7 +43,7 @@ function getSteps() {
     },
     {
       title: 'My First Prosthesis Design',
-      summary: 'First Prosthesis',
+      summary: 'Prosthesis Design',
     },
     {
       title: 'My Preferences for Prosthesis Design',

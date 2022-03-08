@@ -341,7 +341,7 @@ export default function DesktopTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
-          <RoadWarningSign icon="prosthesis" />
+          <RoadWarningSign icon="one-leg" />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -382,8 +382,8 @@ export default function DesktopTimelineComponent() {
         <TimelineSeparator>
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
-          <RoadWarningSign icon="prosthesis" />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
+          <RoadWarningSign icon="one-leg" />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
