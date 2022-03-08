@@ -175,7 +175,7 @@ export default function MobileTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
-          <RoadWarningSign icon="walker" />
+          <RoadWarningSign icon="prosthesis" />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -217,7 +217,7 @@ export default function MobileTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
-          <RoadWarningSign icon="walker" />
+          <RoadWarningSign icon="prosthesis" />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -262,7 +262,7 @@ export default function MobileTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
-          <RoadWarningSign icon="walker" />
+          <RoadWarningSign icon="one-leg" />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -310,7 +310,7 @@ export default function MobileTimelineComponent() {
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
-          <RoadWarningSign icon="walker" />
+          <RoadWarningSign icon="one-leg" />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
@@ -346,7 +346,7 @@ export default function MobileTimelineComponent() {
         <TimelineSeparator>
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
-          <RoadWarningSign icon="walker" />
+          <RoadWarningSign icon="one-leg" />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />
           <img src={imgRoadSvg} alt="road" style={{ width: 40 }} />

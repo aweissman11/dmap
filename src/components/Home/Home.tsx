@@ -40,7 +40,7 @@ const Home = () => {
         Decision-Making Aid for Lower Limb Prosthesis Design
       </Typography>
       <Typography gutterBottom align="center" sx={{ mt: 4 }}>
-        This tool is designed to help you and your prosthetists work together
+        This tool is designed to help you and your prosthetist work together
         with your care team to make the best prosthesis for you.
       </Typography>
       <Typography gutterBottom align="center">

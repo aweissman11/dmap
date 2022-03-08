@@ -27,6 +27,7 @@ export default function Step3() {
             gutterBottom
             variant="h3"
             sx={{ fontSize: '2.5em', mt: 6 }}
+            align="center"
           >
             <b>What is important to you for your first prosthesis?</b>
           </Typography>

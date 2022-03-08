@@ -101,12 +101,11 @@ export default function Step5() {
               </Typography>
               <Typography>
                 <u>
-                  <b>Other people with amputation:</b>
+                  <b>Manufacturer Trials:</b>
                 </u>
               </Typography>
               <Typography sx={{ mb: 1 }}>
-                Connect with other people who are using the option to learn
-                about their experience.
+                Are there ways to get experience using this option?
               </Typography>
             </Grid>
             <Grid item xs={2} container alignItems="center">

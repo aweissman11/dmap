@@ -59,7 +59,7 @@ describe('Map', () => {
 
     fireEvent.click(nextBtn);
     await waitFor(() => {
-      getAllByText(/First Prosthesis/i)[0];
+      getAllByText(/Prosthesis Design/i)[0];
     });
 
     fireEvent.click(nextBtn);
@@ -99,12 +99,12 @@ describe('Map', () => {
   });
 
   test('click step button', async () => {
-    const { getByText } = renderComponent({ step: 6 });
+    const { getAllByText } = renderComponent({ step: 6 });
     const stepBtn = await screen.findByTestId('step-btn-4');
     fireEvent.click(stepBtn);
 
     await waitFor(() => {
-      getByText(/First Prosthesis/i);
+      getAllByText(/Prosthesis Design/i)[0];
     });
   });
 });

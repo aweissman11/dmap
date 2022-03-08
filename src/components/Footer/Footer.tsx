@@ -15,7 +15,7 @@ export default function Footer() {
     <FooterWrap printMode={printMode}>
       <Container>
         <Typography sx={{ fontSize: '1.2em', pb: 2 }} align="center">
-          This project is funded by The Orthotics and Prosthetics Research
+          This project is funded by the Orthotics and Prosthetics Research
           Foundation
         </Typography>
         <Typography align="center">
