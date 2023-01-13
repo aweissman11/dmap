@@ -30,7 +30,9 @@ export default function Step7() {
         </Typography>
       </StepTitleGrid>
       <Grid item md={9} xs={12} sx={{ mb: 6 }}>
-        <Paper sx={{ p: 3, backgroundColor: theme => theme.palette.grey[200] }}>
+        <Paper
+          sx={{ p: 3, backgroundColor: (theme) => theme.palette.grey[200] }}
+        >
           <Grid container>
             <Grid item xs={12} container justifyContent="flex-end">
               <Button
@@ -50,7 +52,7 @@ export default function Step7() {
         <BluePaper>
           <Grid container direction="column" alignItems="center">
             <a
-              href="https://dmap-files.s3.us-west-2.amazonaws.com/dmap_prototype.pdf"
+              href="https://dmap-files.s3.us-west-2.amazonaws.com/2022_09_28_DMAP+Prototype+Copyright.pdf"
               target="_blank"
               rel="noreferrer"
             >
