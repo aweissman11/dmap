@@ -69,7 +69,7 @@ const Home = () => {
           <BluePaper>
             <Grid container direction="column" alignItems="center">
               <a
-                href="https://dmap-files.s3.us-west-2.amazonaws.com/dmap_prototype.pdf"
+                href="https://dmap-files.s3.us-west-2.amazonaws.com/2022_09_28_DMAP+Prototype+Copyright.pdf"
                 target="_blank"
                 rel="noreferrer"
               >
