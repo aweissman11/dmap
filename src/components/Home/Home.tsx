@@ -75,7 +75,12 @@ const Home = () => {
               >
                 <Thumbnail src={imgPdfThumbnail} alt="PDF Thumbnail" />
               </a>
-              <Typography gutterBottom variant="h3" sx={{ fontSize: '1.5em' }}>
+              <Typography
+                gutterBottom
+                variant="h3"
+                sx={{ fontSize: '1.5em' }}
+                align="center"
+              >
                 <b>Click here to print a paper version of this decision aid</b>
               </Typography>
             </Grid>
